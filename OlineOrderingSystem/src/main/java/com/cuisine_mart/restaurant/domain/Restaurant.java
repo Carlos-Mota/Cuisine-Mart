@@ -1,5 +1,7 @@
 package com.cuisine_mart.restaurant.domain;
 
+import com.cuisine_mart.user.domain.Address;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,7 +16,8 @@ public class Restaurant {
 
     private String name;
 
-    private String Address;
+    @ElementCollection
+    private List<Address> addressList;
 
     @OneToOne
     @JoinColumn(name = "category_id")
@@ -23,12 +26,20 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
 
-    public String getAddress() {
-        return Address;
+    public List<Address> getAddressList() {
+        return addressList;
     }
 
-    public void setAddress(String address) {
-        Address = address;
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
 
     public String getName() {
