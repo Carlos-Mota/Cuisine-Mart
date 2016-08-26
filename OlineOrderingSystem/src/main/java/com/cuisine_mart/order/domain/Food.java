@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,31 +13,33 @@ import javax.persistence.Table;
 public class Food {
 	@Id
 	@GeneratedValue
-	private int foodId;
+	private int id;
 	private String name;
 	@ElementCollection
 	private List<FoodType> type;
 	private String description;
 	private byte[] image;
+	private double price;
 	
 	public Food() {
 		super();
 	}
 
-	public Food(String name, List<FoodType> type, String description, byte[] image) {
+	public Food(String name, List<FoodType> type, String description, byte[] image, double price) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.description = description;
 		this.image = image;
+		this.price=price;
 	}
 
-	public int getFoodId() {
-		return foodId;
+	public int getId() {
+		return id;
 	}
 
-	public void setFoodId(int foodId) {
-		this.foodId = foodId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -71,6 +72,14 @@ public class Food {
 
 	public void setImage(byte[] image) {
 		this.image = image;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	
 	

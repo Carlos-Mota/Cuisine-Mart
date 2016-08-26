@@ -3,7 +3,12 @@ package com.cuisine_mart.order.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.cuisine_mart.user.domain.Address;
 
 @Entity
 @Table
@@ -11,12 +16,22 @@ public class OrderDetail {
 	@Id
 	@GeneratedValue
 	private int id;
-	private int orderId;
+	@ManyToOne
+	@JoinColumn(name="orderId")
+	private Order order;
+	@OneToOne
+	@JoinColumn(name="id",referencedColumnName="id")
+	private Food food;
+	private int qty;
+	@OneToOne
+	@JoinColumn(name="addressId")
+	private Address address;
 	
 	public OrderDetail() {
 		super();
 	}
-
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -25,14 +40,32 @@ public class OrderDetail {
 		this.id = id;
 	}
 
-	public int getOrderId() {
-		return orderId;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
-	
+
+
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
+	}
+
+
+	public int getQty() {
+		return qty;
+	}
+
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
 	
 
 }
