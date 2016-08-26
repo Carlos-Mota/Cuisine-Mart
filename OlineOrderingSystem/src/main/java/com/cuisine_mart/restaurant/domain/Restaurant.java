@@ -16,7 +16,7 @@ public class Restaurant {
 
     private String name;
 
-    @ElementCollection
+    @OneToMany(mappedBy = "addressId")
     private List<Address> addressList;
 
     @OneToOne
