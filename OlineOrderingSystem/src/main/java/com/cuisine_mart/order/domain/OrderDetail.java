@@ -30,8 +30,17 @@ public class OrderDetail {
 	public OrderDetail() {
 		super();
 	}
+	 
 	
-	
+	public OrderDetail(Order order, Food food, int qty, Address address) {
+		super();
+		this.order = order;
+		this.food = food;
+		this.qty = qty;
+		this.address = address;
+	}
+
+
 	public int getId() {
 		return id;
 	}
