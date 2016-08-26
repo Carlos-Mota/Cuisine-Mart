@@ -6,8 +6,15 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.tiles2.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+
+
 
 /**
  * Created by Rajiv on 8/26/2016.
@@ -17,7 +24,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan({ "com.cuisine_mart.*" })
 @PropertySource(value = "application.properties")
 @Import({ SpringSecurityConfig.class })
-public class AppConfig {
+public class AppConfig extends WebMvcConfigurerAdapter {
     @Value("${spring.database.driverClassName}")
     private String driverClassName;
 
@@ -54,5 +61,35 @@ public class AppConfig {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder;
     }
-
+    
+    /**
+     * Configure TileConfigurer.
+     */
+    @Bean
+    public TilesConfigurer tilesConfigurer(){
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
+        tilesConfigurer.setCheckRefresh(true);
+        return tilesConfigurer;
+    }
+    
+    /**
+     * Configure ViewResolvers to deliver perferred views
+     */
+    
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+    	TilesViewResolver viewResolver = new TilesViewResolver();
+    	registry.viewResolver(viewResolver);
+    }
+    
+    /**
+     * Configure ResourceHandlers to serve static resource like CSS/JAVAScript
+     */
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    	registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+    }
+    
 }

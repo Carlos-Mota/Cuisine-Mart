@@ -9,4 +9,5 @@ public class OnlineOrderingSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineOrderingSystemApplication.class, args);
 	}
+	
 }
