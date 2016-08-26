@@ -1,4 +1,4 @@
-package com.cuisine_mart;
+package com.cuisine_mart.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
