@@ -2,6 +2,7 @@ package com.cuisine_mart.order.domain;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ public class Food {
 	@GeneratedValue
 	private int foodId;
 	private String name;
-	@Enumerated
+	@ElementCollection
 	private List<FoodType> type;
 	private String description;
 	private byte[] image;
