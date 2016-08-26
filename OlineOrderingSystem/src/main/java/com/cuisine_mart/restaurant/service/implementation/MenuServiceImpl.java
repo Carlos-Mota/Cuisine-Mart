@@ -1,6 +1,6 @@
 package com.cuisine_mart.restaurant.service.implementation;
 
-import com.cuisine_mart.restaurant.service.IMenuService;
+import com.cuisine_mart.restaurant.service.IServiceContract.IMenuService;
 import org.springframework.stereotype.Service;
 
 /**

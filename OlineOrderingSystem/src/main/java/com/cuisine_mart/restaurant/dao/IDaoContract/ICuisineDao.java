@@ -1,4 +1,4 @@
-package com.cuisine_mart.restaurant.dao;
+package com.cuisine_mart.restaurant.dao.IDaoContract;
 
 import com.cuisine_mart.restaurant.domain.CuisineCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
