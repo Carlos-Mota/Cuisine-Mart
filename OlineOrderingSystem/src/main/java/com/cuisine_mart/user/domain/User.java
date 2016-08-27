@@ -16,12 +16,23 @@ public class User extends Person {
 	private String userName;
 	private String password;
 	private String role;
+	private boolean enabled;
 	
+	
+
 	@OneToMany(mappedBy="user")
 	private List<Order> orders = new ArrayList<>();
 
 	public User() {
 
+	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public String getUserName() {

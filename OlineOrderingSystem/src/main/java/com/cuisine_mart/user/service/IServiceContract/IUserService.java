@@ -8,7 +8,7 @@ import com.cuisine_mart.user.domain.User;
 
 @Service
 public interface IUserService {
-	
+	public void signup(User user); 
 	boolean authenticateUser(User user);
 	List<User> getAllUsers();
 	User findUserByUserId(int userId);
