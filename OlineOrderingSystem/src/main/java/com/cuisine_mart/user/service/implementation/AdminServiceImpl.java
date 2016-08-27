@@ -1,10 +1,13 @@
 package com.cuisine_mart.user.service.implementation;
 
+import org.springframework.stereotype.Service;
+
 import com.cuisine_mart.restaurant.domain.Menu;
 import com.cuisine_mart.restaurant.domain.Restaurant;
 import com.cuisine_mart.user.domain.User;
 import com.cuisine_mart.user.service.IServiceContract.IAdminService;
 
+@Service
 public class AdminServiceImpl implements IAdminService{
 
 	@Override

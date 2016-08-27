@@ -11,6 +11,6 @@ import com.cuisine_mart.user.domain.User;
 
 @Repository
 public interface IUserDAO extends JpaRepository<User, Long> {
-	@Query("from User u where u.userName like CONCAT('%',:keyword,'%') ")
+	@Query("from User u where u.username like CONCAT('%',:keyword,'%') ")
 	List<User> findAllUserByKeyword(@Param("keyword") String keyword);
 }

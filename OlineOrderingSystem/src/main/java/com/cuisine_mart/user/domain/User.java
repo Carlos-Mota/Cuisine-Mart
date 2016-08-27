@@ -5,66 +5,82 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.cuisine_mart.order.domain.Order;
 
-@Entity
-public class User extends Person {
-	private String userName;
-	private String password;
-	private String role;
-	private boolean enabled;
-	
-	
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-	@OneToMany(mappedBy="user")
-	private List<Order> orders = new ArrayList<>();
+@Entity
+@Table(name = "users")
+public class User {
+
+	private String username;
+	private String password;
+	private boolean enabled;
+	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
 	public User() {
-
-	}
-	
-	public boolean isEnabled() {
-		return enabled;
 	}
 
-	public void setEnabled(boolean enabled) {
+	public User(String username, String password, boolean enabled) {
+		this.username = username;
+		this.password = password;
 		this.enabled = enabled;
 	}
 
-	public String getUserName() {
-		return userName;
+	public User(String username, String password, boolean enabled, Set<UserRole> userRole) {
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+		this.userRole = userRole;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	@Id
+	@Column(name = "username", unique = true, nullable = false, length = 45)
+	public String getUsername() {
+		return this.username;
 	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	@Column(name = "password", nullable = false, length = 60)
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
+	@Column(name = "enabled", nullable = false)
+	public boolean isEnabled() {
+		return this.enabled;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
-	public List<Order> getOrders() {
-		return orders;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	public Set<UserRole> getUserRole() {
+		return this.userRole;
 	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
+	public void setUserRole(Set<UserRole> userRole) {
+		this.userRole = userRole;
 	}
+
 	
+
 }
