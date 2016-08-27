@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cuisine_mart.order.dao.IDaoContract.IFoodDao;
 import com.cuisine_mart.order.domain.Food;
@@ -17,13 +18,14 @@ public class FoodServiceImpl implements IFoodService {
 	IFoodDao foodDao;
 
 	@Override
+	@Transactional
 	public Food create(Food food) {
-		return null;
+		return foodDao.save(food);
 	}
 
 	@Override
 	public void update(Food food) throws FoodNotFound {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -35,8 +37,7 @@ public class FoodServiceImpl implements IFoodService {
 
 	@Override
 	public List<Food> findByName(String name) throws FoodNotFound {
-		// TODO Auto-generated method stub
-		return null;
+		return foodDao.findFoodByName(name);
 	}
 
 	@Override
