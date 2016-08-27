@@ -4,9 +4,17 @@
 <tiles-definitions>
 	<!-- Base Definition -->
 	<definition name="base-definition"
-				template="/WEB-INF/views/layouts/defaultLayout.jsp">
+				template="/WEB-INF/views/layouts/mainWindow.jsp">
 		<put-attribute name="title" value=""/>		
 		<put-attribute name="header" value="/WEB-INF/views/tiles/template/header.jsp"/>	
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp"/>
+	</definition>
+	
+	<!-- Home Page -->
+	<definition name="home" extends="base-definition">
+		<put-attribute name="title" value="Welcome"/>
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp"/>
 	</definition>
 
 </tiles-definitions>

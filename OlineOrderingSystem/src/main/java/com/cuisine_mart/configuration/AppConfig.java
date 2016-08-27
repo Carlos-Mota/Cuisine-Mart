@@ -66,8 +66,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
      * Configure TileConfigurer.
      */
     @Bean
-    public TilesConfigurer tilesConfigurer(){
-        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+    org.springframework.web.servlet.view.tiles3.TilesConfigurer tilesConfigurer() {
+    	org.springframework.web.servlet.view.tiles3.TilesConfigurer tilesConfigurer = new org.springframework.web.servlet.view.tiles3.TilesConfigurer();
         tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
         tilesConfigurer.setCheckRefresh(true);
         return tilesConfigurer;
