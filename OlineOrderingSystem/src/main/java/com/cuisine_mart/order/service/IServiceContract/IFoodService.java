@@ -6,6 +6,7 @@ import com.cuisine_mart.order.domain.Food;
 import com.cuisine_mart.order.exception.FoodNotFound;
 
 public interface IFoodService {
+	
 	public Food create(Food food);
 	public void update(Food food) throws FoodNotFound;
 	public void delete(int foodId) throws FoodNotFound;
