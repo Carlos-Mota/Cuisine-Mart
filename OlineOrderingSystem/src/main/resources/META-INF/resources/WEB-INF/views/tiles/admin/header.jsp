@@ -15,6 +15,7 @@
         <input style="margin-top: 15px" type="text" name="searchText" value="Search.."/>
         <input type="submit" value="search"/>
     </li>
+    <li> <jsp:include page="../common/logout.jsp" flush="true"/></li>
 </ul>
 
 </body>

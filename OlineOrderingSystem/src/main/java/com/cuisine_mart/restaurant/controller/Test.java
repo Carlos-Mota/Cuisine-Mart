@@ -8,11 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by Rajiv on 8/25/2016.
  */
 @Controller
-@RequestMapping("/admin")
 public class Test {
-    @RequestMapping("/testUrl")
+    @RequestMapping("/user/testUrl")
     public String testView(ModelMap modelMap){
-        modelMap.addAttribute("message", "this is test message");
+        modelMap.addAttribute("message", "from user");
         return "demo";
     }
+
+
+    @RequestMapping("/admin/testUrl")
+    public String testView1(ModelMap modelMap){
+        modelMap.addAttribute("message", "from admin");
+        return "demo";
+    }
+
 }
