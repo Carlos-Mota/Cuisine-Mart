@@ -115,6 +115,13 @@
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-integration</artifactId>
         </dependency>
+        <!-- Log4j Dependency -->
+        <dependency>
+        	<groupId>log4j</groupId>
+        	<artifactId>log4j</artifactId>
+        	<version>1.2.17</version>
+        	<scope>runtime</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
