@@ -6,7 +6,7 @@
 <html lang="en">
 
 <body>
-<jsp:include page="admin/header.jsp" flush="true"/>
+<jsp:include page="tiles/admin/header.jsp" flush="true"/>
 <%--<c:url value="/resources/text.txt" var="url"/>--%>
 <spring:url value="/resources/text.txt" htmlEscape="true" var="springUrl" />
 Spring URL: ${springUrl} at ${time}  inside templates

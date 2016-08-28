@@ -48,14 +48,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-//        auth.inMemoryAuthentication().
-//                withUser("admin").password("admin").roles("ADMIN").
-//                and().withUser("user").password("user").roles("USER");
 
-        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder)
+        auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "select user_name,password from user where user_name=?")
+                        "select username,password, enabled from users where username=?")
                 .authoritiesByUsernameQuery(
-                        "select user_name, role from user where user_name=?");
+                        "select username, role from user_roles where username=?");
     }
 }

@@ -3,6 +3,7 @@ package com.cuisine_mart.restaurant.domain;
 import com.cuisine_mart.user.domain.Address;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,6 +17,8 @@ public class Restaurant {
 
     private String name;
 
+    private String description;
+
     @OneToMany(mappedBy = "addressId")
     private List<Address> addressList;
 
@@ -25,6 +28,40 @@ public class Restaurant {
 
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
+
+    @Temporal(TemporalType.DATE)
+    private Date dateCreated;
+
+    @Temporal(TemporalType.DATE)
+    private Date lastUpdated;
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public List<Address> getAddressList() {
         return addressList;
