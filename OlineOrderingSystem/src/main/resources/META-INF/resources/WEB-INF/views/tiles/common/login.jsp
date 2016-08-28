@@ -36,7 +36,7 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 <div id="login-box">
-    <h3>Admin Login with Username and Password</h3>
+    <h3>Login with Username and Password</h3>
     <c:if test="${not empty error}">
         <div class="error">${error}</div>
     </c:if>

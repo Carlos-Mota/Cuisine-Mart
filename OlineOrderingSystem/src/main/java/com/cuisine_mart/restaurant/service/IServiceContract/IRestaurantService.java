@@ -11,7 +11,8 @@ import java.util.List;
  */
 @Service
 public interface IRestaurantService {
-    List<Restaurant> findAllRestaurantsByCuisine(CuisineCategory cuisineCategory);
+    Restaurant get(Long id);
+    List<Restaurant> findAllByCuisine(CuisineCategory cuisineCategory);
     List<Restaurant> findAllByNameLike(String name);
     List<Restaurant> findAllByDescriptionLike(String description);
     List<Restaurant> findAll();

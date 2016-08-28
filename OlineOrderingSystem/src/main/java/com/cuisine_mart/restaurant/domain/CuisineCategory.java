@@ -10,7 +10,7 @@ import java.util.Date;
 public class CuisineCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long cuisineId;
 
     private String name;
 
@@ -54,7 +54,7 @@ public class CuisineCategory {
         this.restaurant = restaurant;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
@@ -63,7 +63,7 @@ public class CuisineCategory {
     }
 
     public Long getId() {
-        return id;
+        return cuisineId;
     }
 
     public void setName(String name) {

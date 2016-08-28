@@ -13,20 +13,20 @@ import java.util.List;
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long restaurantId;
 
     private String name;
 
     private String description;
 
-    @OneToMany(mappedBy = "addressId")
+    @OneToMany(mappedBy = "addressId", cascade = CascadeType.ALL)
     private List<Address> addressList;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private CuisineCategory cuisineCategory;
 
-    @OneToMany(mappedBy = "restaurant")
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<Menu> menus;
 
     @Temporal(TemporalType.DATE)
@@ -60,7 +60,7 @@ public class Restaurant {
     }
 
     public Long getId() {
-        return id;
+        return restaurantId;
     }
 
     public List<Address> getAddressList() {

@@ -18,10 +18,14 @@ public class RestaurantServiceImpl implements IRestaurantService {
     @Autowired
     IRestaurantDao restaurantDao;
 
+    @Override
+    public Restaurant get(Long id) {
+        return restaurantDao.findOne(id);
+    }
 
     @Override
     @Transactional
-    public List<Restaurant> findAllRestaurantsByCuisine(CuisineCategory cuisineCategory) {
+    public List<Restaurant> findAllByCuisine(CuisineCategory cuisineCategory) {
         Long cuisineCategoryId = cuisineCategory.getId();
         return restaurantDao.findAllByCuisine(cuisineCategoryId);
     }

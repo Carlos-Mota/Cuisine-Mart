@@ -10,7 +10,7 @@ import java.util.Date;
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long menuId;
 
     private String name;
 
@@ -20,7 +20,7 @@ public class Menu {
 
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Restaurant restaurant;
 
     @Temporal(TemporalType.DATE)
@@ -49,7 +49,7 @@ public class Menu {
         this.dateCreated = dateCreated;
     }
 
-    public Long getId(){return this.id; }
+    public Long getId(){return this.menuId; }
 
     public String getName() {
         return name;
