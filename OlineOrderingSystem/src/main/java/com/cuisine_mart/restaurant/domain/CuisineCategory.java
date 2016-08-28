@@ -1,6 +1,7 @@
 package com.cuisine_mart.restaurant.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Rajiv on 8/26/2016.
@@ -12,6 +13,38 @@ public class CuisineCategory {
     private Long id;
 
     private String name;
+
+    private String description;
+
+    @Temporal(TemporalType.DATE)
+    private Date dateCreated;
+
+    @Temporal(TemporalType.DATE)
+    private Date lastUpdated;
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Restaurant getRestaurant() {
         return restaurant;
@@ -27,6 +60,10 @@ public class CuisineCategory {
 
     public String getName() {
         return name;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setName(String name) {

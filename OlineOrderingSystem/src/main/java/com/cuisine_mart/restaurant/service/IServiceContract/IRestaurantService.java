@@ -1,5 +1,6 @@
 package com.cuisine_mart.restaurant.service.IServiceContract;
 
+import com.cuisine_mart.restaurant.domain.CuisineCategory;
 import com.cuisine_mart.restaurant.domain.Restaurant;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,13 @@ import java.util.List;
  */
 @Service
 public interface IRestaurantService {
-    List<Restaurant> findRestaurantsByCuisine();
+    List<Restaurant> findAllRestaurantsByCuisine(CuisineCategory cuisineCategory);
+    List<Restaurant> findAllByNameLike(String name);
+    List<Restaurant> findAllByDescriptionLike(String description);
+    List<Restaurant> findAll();
+    void save(Restaurant restaurant);
+    void update(Restaurant restaurant);
+    void delete(Restaurant restaurant);
+    void delete(Long id);
 
 }
