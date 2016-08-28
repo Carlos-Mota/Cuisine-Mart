@@ -19,6 +19,7 @@ public class Food {
 	@Id
 	@GeneratedValue
 	@NotNull
+	@Column(name="FoodId",nullable=false)
 	private int id;
 	@Column(name="FoodName",nullable=false)
 	private String name;

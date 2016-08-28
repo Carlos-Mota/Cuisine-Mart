@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import com.cuisine_mart.order.domain.Order;
+import com.cuisine_mart.order.domain.FoodOrder;
 
 import java.util.HashSet;
 import java.util.Set;

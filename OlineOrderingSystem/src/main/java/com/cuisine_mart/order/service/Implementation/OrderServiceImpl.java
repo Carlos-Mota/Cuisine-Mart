@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.cuisine_mart.order.domain.Order;
+import com.cuisine_mart.order.domain.FoodOrder;
 import com.cuisine_mart.order.exception.OrderNotFound;
 import com.cuisine_mart.order.service.IServiceContract.IOrderService;
 
@@ -13,13 +13,13 @@ import com.cuisine_mart.order.service.IServiceContract.IOrderService;
 public class OrderServiceImpl implements IOrderService {
 
 	@Override
-	public Order create(Order order) {
+	public FoodOrder create(FoodOrder order) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(Order order) throws OrderNotFound {
+	public void update(FoodOrder order) throws OrderNotFound {
 		// TODO Auto-generated method stub
 		
 	}
@@ -31,31 +31,31 @@ public class OrderServiceImpl implements IOrderService {
 	}
 
 	@Override
-	public List<Order> findByDate(Date date) throws OrderNotFound {
+	public List<FoodOrder> findByDate(Date date) throws OrderNotFound {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Order> findByType(String type) throws OrderNotFound {
+	public List<FoodOrder> findByType(String type) throws OrderNotFound {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Order> findAll() {
+	public List<FoodOrder> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Order findById(int id) throws OrderNotFound {
+	public FoodOrder findById(int id) throws OrderNotFound {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Order> findOrderByUser(int userId) throws OrderNotFound {
+	public List<FoodOrder> findOrderByUser(int userId) throws OrderNotFound {
 		// TODO Auto-generated method stub
 		return null;
 	}

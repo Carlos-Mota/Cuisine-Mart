@@ -1,5 +1,6 @@
 package com.cuisine_mart.order.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +20,13 @@ public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotNull
+	@Column(name="orderDetailId",nullable=false)
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="orderId")
-	private Order order;
+	private FoodOrder order;
 	@OneToOne
-	@JoinColumn(name="id",referencedColumnName="id")
+	@JoinColumn(name="FoodId",referencedColumnName="FoodId")
 	private Food food;
 	private int qty;
 	@OneToOne
@@ -36,7 +38,7 @@ public class OrderDetail {
 	}
 	 
 	
-	public OrderDetail(Order order, Food food, int qty, Address address) {
+	public OrderDetail(FoodOrder order, Food food, int qty, Address address) {
 		super();
 		this.order = order;
 		this.food = food;
@@ -53,11 +55,11 @@ public class OrderDetail {
 		this.id = id;
 	}
 
-	public Order getOrder() {
+	public FoodOrder getOrder() {
 		return order;
 	}
 
-	public void setOrder(Order order) {
+	public void setOrder(FoodOrder order) {
 		this.order = order;
 	}
 

@@ -23,7 +23,7 @@ import com.cuisine_mart.user.domain.User;
 
 @Entity
 @Table
-public class Order {
+public class FoodOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotNull
@@ -41,11 +41,11 @@ public class Order {
 	private Address address;
 	
 	
-	public Order() {
+	public FoodOrder() {
 		super();
 	}
 	
-	public Order(Date orderDate, List<OrderDetail> orderDetail, User user, Address address) {
+	public FoodOrder(Date orderDate, List<OrderDetail> orderDetail, User user, Address address) {
 		super();
 		this.orderDate = orderDate;
 		this.orderDetail = orderDetail;
@@ -53,7 +53,7 @@ public class Order {
 		this.address = address;
 	}
 
-	public Order(Date orderDate, List<OrderDetail> orderDetail) {
+	public FoodOrder(Date orderDate, List<OrderDetail> orderDetail) {
 		super();
 		this.orderDate = orderDate;
 		this.orderDetail = orderDetail;

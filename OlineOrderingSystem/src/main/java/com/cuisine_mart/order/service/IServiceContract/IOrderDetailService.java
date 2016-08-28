@@ -3,7 +3,7 @@ package com.cuisine_mart.order.service.IServiceContract;
 import java.util.Date;
 import java.util.List;
 
-import com.cuisine_mart.order.domain.Order;
+import com.cuisine_mart.order.domain.FoodOrder;
 import com.cuisine_mart.order.domain.OrderDetail;
 import com.cuisine_mart.order.exception.OrderNotFound;
 
