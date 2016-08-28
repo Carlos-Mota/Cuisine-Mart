@@ -13,6 +13,7 @@ import com.cuisine_mart.order.exception.FoodNotFound;
 import com.cuisine_mart.order.service.IServiceContract.IFoodService;
 
 @Service
+@Transactional
 public class FoodServiceImpl implements IFoodService {
 	@Autowired 
 	IFoodDao foodDao;

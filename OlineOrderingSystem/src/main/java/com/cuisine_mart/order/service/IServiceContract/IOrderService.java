@@ -15,4 +15,5 @@ public interface IOrderService {
 	public List<Order> findByType(String type) throws OrderNotFound;
 	public List<Order> findAll();
 	public Order findById(int id) throws OrderNotFound;
+	public List<Order> findOrderByUser(int userId) throws OrderNotFound;
 }

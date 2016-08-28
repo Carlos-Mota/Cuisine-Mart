@@ -54,4 +54,10 @@ public class OrderServiceImpl implements IOrderService {
 		return null;
 	}
 
+	@Override
+	public List<Order> findOrderByUser(int userId) throws OrderNotFound {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

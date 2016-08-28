@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.cuisine_mart.user.domain.Address;
 import com.cuisine_mart.user.domain.User;
@@ -24,6 +26,7 @@ import com.cuisine_mart.user.domain.User;
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	private int id;
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
@@ -31,6 +34,7 @@ public class Order {
 	private List<OrderDetail> orderDetail = new ArrayList<>();
 	@ManyToOne
 	@JoinColumn
+	@NotNull
 	private User user;
 	@OneToOne
 	@JoinColumn(name="addressId")
@@ -88,6 +92,12 @@ public class Order {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderDate=" + orderDate + ", orderDetail=" + orderDetail + ", user=" + user
+				+ ", address=" + address + "]";
 	}
 	
 	

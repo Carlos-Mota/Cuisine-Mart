@@ -22,12 +22,7 @@ public class OnlineOrderingSystemApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineOrderingSystemApplication.class, args);
-		//IFoodService foodservice = new FoodServiceImpl();
-		// Just For Test
-		List<FoodType> foodType = new ArrayList<>();
-		foodType.add(FoodType.Pizza);
-		Food sample = new Food("Tuna Pizza", foodType, "Hot Pizza", null, 10.2);
-		foodservice.create(sample);
+
 	}
 	
 }

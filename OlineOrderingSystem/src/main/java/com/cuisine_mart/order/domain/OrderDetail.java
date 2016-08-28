@@ -2,11 +2,14 @@ package com.cuisine_mart.order.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.cuisine_mart.user.domain.Address;
 
@@ -14,7 +17,8 @@ import com.cuisine_mart.user.domain.Address;
 @Table
 public class OrderDetail {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="orderId")
