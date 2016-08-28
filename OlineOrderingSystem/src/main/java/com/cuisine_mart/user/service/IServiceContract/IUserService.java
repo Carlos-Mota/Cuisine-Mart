@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.cuisine_mart.user.domain.User;
-
+/**
+ * @author Sadiksha
+ *
+ */
 @Service
 public interface IUserService {
 	public void signup(User user); 

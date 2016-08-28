@@ -1,4 +1,4 @@
-package com.cuisine_mart.user.service.implementation;
+package com.cuisine_mart.user.service.Implementation;
 
 import java.util.List;
 
@@ -6,7 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.cuisine_mart.user.domain.Address;
 import com.cuisine_mart.user.service.IServiceContract.IAddressService;
-
+/**
+ * @author Sadiksha
+ *
+ */
 @Service
 public class AddressServiceImpl implements IAddressService{
 

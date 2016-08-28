@@ -1,7 +1,10 @@
 package com.cuisine_mart.user.domain;
 
 import javax.persistence.Entity;
-
+/**
+ * @author Sadiksha
+ *
+ */
 @Entity
 public class Admin extends Person {
 

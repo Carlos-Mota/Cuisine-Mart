@@ -12,7 +12,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
+/**
+ * @author Sadiksha
+ *
+ */
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Person {

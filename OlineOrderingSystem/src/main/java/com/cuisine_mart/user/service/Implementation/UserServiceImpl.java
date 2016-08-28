@@ -1,14 +1,17 @@
-package com.cuisine_mart.user.service.implementation;
+package com.cuisine_mart.user.service.Implementation;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cuisine_mart.user.dao.IUserDAO;
+import com.cuisine_mart.user.dao.IDaoContract.IUserDAO;
 import com.cuisine_mart.user.domain.User;
 import com.cuisine_mart.user.service.IServiceContract.IUserService;
-
+/**
+ * @author Sadiksha
+ *
+ */
 @Service
 public class UserServiceImpl implements IUserService{
 	

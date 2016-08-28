@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cuisine_mart.user.domain.User;
-import com.cuisine_mart.user.service.implementation.UserServiceImpl;
+import com.cuisine_mart.user.service.Implementation.UserServiceImpl;
+/**
+ * @author Sadiksha
+ *
+ */
 
 @Controller
 public class UserController {
