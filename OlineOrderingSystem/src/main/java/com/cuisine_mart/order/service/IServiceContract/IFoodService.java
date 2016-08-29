@@ -11,9 +11,10 @@ public interface IFoodService {
 	
 	public Food create(Food food);
 	public void update(Food food) throws FoodNotFound;
-	public void delete(int foodId) throws FoodNotFound;
+	public void delete(Long foodId) throws FoodNotFound;
+	public void delete(Food food) throws FoodNotFound;
 	public List<Food> findByName(String name) throws FoodNotFound;
 	public List<Food> findByType(String type) throws FoodNotFound;
 	public List<Food> findAll();
-	public Food findById(int id) throws FoodNotFound;
+	public Food findById(Long id) throws FoodNotFound;
 }

@@ -1,30 +1,29 @@
 package com.cuisine_mart.order.domain;
 
 import java.util.Arrays;
-import java.util.List;
+
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table
 public class Food {
 	@Id
 	@GeneratedValue
-	@NotNull
 	@Column(name="FoodId",nullable=false)
-	private int id;
+	private Long id;
 	@Column(name="FoodName",nullable=false)
 	private String name;
-	@ElementCollection
-	private List<FoodType> type;
+	//@ElementCollection
+	@Enumerated(EnumType.STRING)
+	private FoodType type;
 	@Column(name="Description",nullable=true)
 	private String description;
 	private byte[] image;
@@ -35,7 +34,7 @@ public class Food {
 		super();
 	}
 
-	public Food(String name, List<FoodType> type, String description, byte[] image, double price) {
+	public Food(String name, FoodType type, String description, byte[] image, double price) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -44,11 +43,11 @@ public class Food {
 		this.price=price;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -60,11 +59,11 @@ public class Food {
 		this.name = name;
 	}
 
-	public List<FoodType> getType() {
+	public FoodType getType() {
 		return type;
 	}
 
-	public void setType(List<FoodType> type) {
+	public void setType(FoodType type) {
 		this.type = type;
 	}
 
@@ -91,6 +90,8 @@ public class Food {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -135,13 +136,12 @@ public class Food {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
+		if (type != other.type)
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 	

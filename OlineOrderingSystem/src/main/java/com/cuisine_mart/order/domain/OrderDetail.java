@@ -19,9 +19,8 @@ import com.cuisine_mart.user.domain.Address;
 public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@NotNull
 	@Column(name="orderDetailId",nullable=false)
-	private int id;
+	private Long id;
 	@ManyToOne
 	@JoinColumn(name="orderId")
 	private FoodOrder order;
@@ -47,11 +46,11 @@ public class OrderDetail {
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
