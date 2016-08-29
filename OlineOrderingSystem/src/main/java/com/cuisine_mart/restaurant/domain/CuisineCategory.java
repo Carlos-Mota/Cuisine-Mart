@@ -12,10 +12,11 @@ public class CuisineCategory {
         super();
     }
 
-    public CuisineCategory(String name,String description,byte[] image){
+    public CuisineCategory(String name,String description,byte[] image,Restaurant restaurant){
         this.name = name;
         this.description = description;
         this.image = image;
+        this.restaurant = restaurant;
     }
 
     @Id
