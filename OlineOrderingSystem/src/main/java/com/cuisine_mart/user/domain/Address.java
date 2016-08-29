@@ -3,6 +3,8 @@ package com.cuisine_mart.user.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 /**
  * @author Sadiksha
  *
@@ -16,8 +18,20 @@ public class Address {
 	private String state;
 	private String zip;
 	private String phoneNo;
+	@ManyToOne
+	@JoinColumn(name="personId")
+	private Person person;
 	
 	public Address(){}
+	
+	public Address(String street, String city, String state, String zip, String phoneNo){
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phoneNo = phoneNo;
+		
+	}
 	public int getAddressId() {
 		return addressId;
 	}

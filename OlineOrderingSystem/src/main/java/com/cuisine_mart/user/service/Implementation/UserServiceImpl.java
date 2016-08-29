@@ -17,6 +17,10 @@ public class UserServiceImpl implements IUserService{
 	
 	@Autowired
 	IUserDAO userDAO;
+	@Override
+	public void saveNewUser(User user) {
+		userDAO.save(user);
+	}
 
 	@Override
 	public boolean authenticateUser(User user) {
@@ -28,6 +32,11 @@ public class UserServiceImpl implements IUserService{
 	public List<User> getAllUsers() {
 		
 		return userDAO.findAll();
+	}
+	
+	@Override
+	public User getUserByUsername(String username) {
+		return userDAO.findByUsername(username);
 	}
 
 	@Override
@@ -52,6 +61,17 @@ public class UserServiceImpl implements IUserService{
 	public void signup(User user) {
 		userDAO.save(user);
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cuisine_mart.user.service.IServiceContract.IUserService#verifyUserByEmail(java.lang.Long)
+	 */
+	@Override
+	public String verifyUserByEmail(Long userId) {
+		User user = userDAO.findOne(userId);
+		user.setEnabled(true);
+		userDAO.save(user);
+		return user.getUsername();
 	}
 
 }

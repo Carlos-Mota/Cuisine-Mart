@@ -35,4 +35,21 @@
 		<put-attribute name="body" value="/WEB-INF/views/tiles/common/error.jsp"/>
 	</definition>
 
+    <!--  restaurant views -->
+    <definition name="restaurantList" extends="base-definition">
+        <put-attribute name="title" value="Restaurant List"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/restaurant/list.jsp"/>
+    </definition>
+
+    <definition name="restaurantDetails" extends="base-definition">
+        <put-attribute name="title" value="Restaurant Detail"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/restaurant/details.jsp"/>
+    </definition>
+    
+    <!-- User Dash Board -->
+    <definition name="userDashBoard" extends="base-definition">
+        <put-attribute name="title" value="Home"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/restaurant/list.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -57,6 +57,9 @@
                 <td colspan='2'><input name="submit" type="submit"
                                        value="submit" /></td>
             </tr>
+            <tr>            
+            	<td colspan='2'><a href="/signup">Sign Up for Free!</a></td>
+            </tr>
             <tr>
                 <td>
                     <input type="hidden" name="${_csrf.parameterName}"
