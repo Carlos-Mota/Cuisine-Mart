@@ -12,8 +12,10 @@ public class CuisineCategory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cuisineId;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private String description;
 
     @Temporal(TemporalType.DATE)

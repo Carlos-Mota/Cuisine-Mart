@@ -15,8 +15,10 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long restaurantId;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private String description;
 
     @OneToMany(mappedBy = "addressId", cascade = CascadeType.ALL)

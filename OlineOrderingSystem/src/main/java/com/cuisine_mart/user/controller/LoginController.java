@@ -19,7 +19,7 @@ public class LoginController {
     public String handleLogin(){
         String view = "";
         if (userHasAuthority("ROLE_ADMIN")) view = "/admin/dashboard";
-        else if(userHasAuthority("ROLE_USER")) view = "/user/dashboard";
+        else if(userHasAuthority("ROLE_USER")) view = "/restaurant/list";
         return "redirect:"+view;
     }
 
