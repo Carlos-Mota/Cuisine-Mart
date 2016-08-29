@@ -37,7 +37,7 @@ public class Restaurant {
 
     private String image;
 
-    @OneToMany(mappedBy = "addressId", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addressList;
 
     @OneToOne(cascade = CascadeType.ALL)

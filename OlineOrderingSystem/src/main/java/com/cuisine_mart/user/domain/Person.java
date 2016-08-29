@@ -1,17 +1,8 @@
 package com.cuisine_mart.user.domain;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 /**
  * @author Sadiksha
  *
@@ -24,8 +15,8 @@ public class Person {
 	private String fristName;
 	private String lastName;
 	private String email;
-	@OneToMany
-	@JoinColumn(name="addressId")
+	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name="addressId")
 	private List<Address> address = new ArrayList<Address>();
 	
 	public Person(){}

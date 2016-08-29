@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Transactional
+//@Transactional
 public class RestaurantServiceImplTest {
     @Autowired
     IRestaurantService restaurantService;
@@ -109,6 +108,7 @@ public class RestaurantServiceImplTest {
     @Test
     public void testSave() throws Exception {
         restaurantService.save(restaurant);
+        restaurantService.save(restaurant1);
         Assert.assertEquals("f-one",restaurantService.get(Long.parseLong("1")).getName());
         Assert.assertEquals("Chinese",restaurantService.get(Long.parseLong("2")).getCuisineCategory().getName());
     }
