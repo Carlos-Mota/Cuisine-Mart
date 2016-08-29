@@ -15,7 +15,7 @@ public class Menu {
         super();
     }
 
-    public Menu(String name,String description,byte[] image,List<Food> food,Restaurant restaurant){
+    public Menu(String name,String description,String image,List<Food> food,Restaurant restaurant){
         this.name = name;
         this.description = description;
         this.image = image;
@@ -37,8 +37,7 @@ public class Menu {
     @Column(nullable = false)
     private String description;
 
-    @Lob
-    private byte[] image;
+    private String image;
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
     private List<Food> food;

@@ -12,11 +12,10 @@ public class CuisineCategory {
         super();
     }
 
-    public CuisineCategory(String name,String description,byte[] image,Restaurant restaurant){
+    public CuisineCategory(String name,String description,String image){
         this.name = name;
         this.description = description;
         this.image = image;
-        this.restaurant = restaurant;
     }
 
     @Id
@@ -29,8 +28,7 @@ public class CuisineCategory {
     @Column(nullable = false)
     private String description;
 
-    @Lob
-    private byte[] image;
+    private String image;
 
     @Temporal(TemporalType.DATE)
     private Date dateCreated;
@@ -61,18 +59,6 @@ public class CuisineCategory {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
 
     public String getName() {
         return name;
