@@ -33,5 +33,11 @@
         <put-attribute name="title" value="Restaurant Detail"/>
         <put-attribute name="body" value="/WEB-INF/views/tiles/restaurant/details.jsp"/>
     </definition>
+    
+    <!-- User Dash Board -->
+    <definition name="userDashBoard" extends="base-definition">
+        <put-attribute name="title" value="Home"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/restaurant/list.jsp"/>
+    </definition>
 
 </tiles-definitions>
