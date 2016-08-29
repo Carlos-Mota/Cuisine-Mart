@@ -8,6 +8,16 @@ import java.util.Date;
  */
 @Entity
 public class CuisineCategory {
+    public CuisineCategory(){
+        super();
+    }
+
+    public CuisineCategory(String name,String description,byte[] image){
+        this.name = name;
+        this.description = description;
+        this.image = image;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cuisineId;
@@ -17,6 +27,9 @@ public class CuisineCategory {
 
     @Column(nullable = false)
     private String description;
+
+    @Lob
+    private byte[] image;
 
     @Temporal(TemporalType.DATE)
     private Date dateCreated;

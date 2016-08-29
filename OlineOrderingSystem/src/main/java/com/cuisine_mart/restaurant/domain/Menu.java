@@ -11,6 +11,18 @@ import java.util.List;
  */
 @Entity
 public class Menu {
+    public Menu(){
+        super();
+    }
+
+    public Menu(String name,String description,byte[] image,List<Food> food,Restaurant restaurant){
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.food = food;
+        this.restaurant = restaurant;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long menuId;
@@ -24,6 +36,9 @@ public class Menu {
 
     @Column(nullable = false)
     private String description;
+
+    @Lob
+    private byte[] image;
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
     private List<Food> food;
