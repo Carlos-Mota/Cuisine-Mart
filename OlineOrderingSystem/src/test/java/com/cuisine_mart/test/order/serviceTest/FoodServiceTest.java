@@ -19,6 +19,8 @@ import com.cuisine_mart.order.domain.Food;
 import com.cuisine_mart.order.domain.FoodType;
 import com.cuisine_mart.order.exception.FoodNotFound;
 import com.cuisine_mart.order.service.IServiceContract.IFoodService;
+import com.cuisine_mart.restaurant.domain.Menu;
+import com.cuisine_mart.restaurant.domain.Restaurant;
 import com.fasterxml.jackson.core.format.InputAccessor.Std;
 
 @RunWith(SpringRunner.class)
@@ -29,6 +31,7 @@ import com.fasterxml.jackson.core.format.InputAccessor.Std;
 public class FoodServiceTest {
 	@Autowired
 	IFoodService foodService;
+	
 
 	@Test
 	public void testCreate() {
