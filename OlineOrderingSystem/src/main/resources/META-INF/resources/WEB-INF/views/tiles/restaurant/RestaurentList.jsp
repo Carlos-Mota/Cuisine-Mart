@@ -28,9 +28,9 @@
                                
                             </div>
                             <input type="button" value="Details" onclick="location.href = '<c:url value='/restaurant/details/${restaurants.restaurantId}'/>'" class="btn btn-primary">
- <%--                               <a href="#" class="btn btn-warning btn-large" onclick="location.href = '<c:url value='/addtocart/${product.productId}/${product.productCategory.categoryId}'/>'">
+                                <a href="#" class="btn btn-warning btn-large" onclick="location.href = '<c:url value='/addtocart/${product.productId}/${product.productCategory.categoryId}'/>'">
                                       <span class="glyphicon-shopping-cart glyphicon"></span> Add to Cart
-                                    </a> --%>
+                                    </a> 
                         </div>
                     </div>
                 </c:forEach>
