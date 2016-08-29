@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.cuisine_mart.order.domain.FoodOrder;
 
@@ -15,6 +18,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,14 +28,68 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "users")
-public class User {
-
+public class User{
+	@Id
+	@GeneratedValue
+	private int userId;	
+	
+	@Column(name="UserName",nullable=false)
 	private String username;
+	@Column(name="Password",nullable=false)
 	private String password;
+	@Column(name="Enabled",nullable=false)
 	private boolean enabled;
+	@Column(name="Email")
+	private String email;
+	@ElementCollection
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
-
+	@OneToOne
+	@JoinColumn(name="Person_Id")
+//	@OneToOne(mappedBy="user")	
+	private Person person;
 	public User() {
+		super();
+	}
+	/**
+	 * @return the userId
+	 */
+	public int getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+/*	*//**
+	 * @return the person
+	 *//*
+	public Person getPerson() {
+		return person;
+	}
+
+	*//**
+	 * @param person the person to set
+	 *//*
+	public void setPerson(Person person) {
+		this.person = person;
+	}*/
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public User(String username, String password, boolean enabled) {

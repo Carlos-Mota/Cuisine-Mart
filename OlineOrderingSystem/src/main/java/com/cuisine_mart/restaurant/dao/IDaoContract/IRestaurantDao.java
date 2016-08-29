@@ -22,7 +22,4 @@ public interface IRestaurantDao extends JpaRepository<Restaurant,Long> {
 
     @Query("from Restaurant c where c.description like CONCAT('%',:description,'%')")
     List<Restaurant> findAllByDescriptionLike(@Param("description") String description);
-
-    @Query("from Restaurant r join r.addressList al where al.addressId = :addressId")
-    Restaurant findByLocation(@Param("addressId") Long addressId);
 }

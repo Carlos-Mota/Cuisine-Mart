@@ -21,7 +21,7 @@ public class OrderDetailService implements IOrderDetailService {
 	}
 
 	@Override
-	public void delete(Long orderDetailId) throws OrderNotFound {
+	public void delete(int orderDetailId) throws OrderNotFound {
 		// TODO Auto-generated method stub
 		
 	}
@@ -45,13 +45,13 @@ public class OrderDetailService implements IOrderDetailService {
 	}
 
 	@Override
-	public OrderDetail findById(Long id) throws OrderNotFound {
+	public OrderDetail findById(int id) throws OrderNotFound {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<OrderDetail> findOrderDetailByOrderId(Long orderId) throws OrderNotFound {
+	public List<OrderDetail> findOrderDetailByOrderId(int orderId) throws OrderNotFound {
 		// TODO Auto-generated method stub
 		return null;
 	}

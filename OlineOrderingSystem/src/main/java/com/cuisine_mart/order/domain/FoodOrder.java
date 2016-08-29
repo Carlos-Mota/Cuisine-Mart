@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,13 +26,13 @@ import com.cuisine_mart.user.domain.User;
 public class FoodOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "orderId",nullable=false)
-	private Long id;
+	@NotNull
+	private int id;
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
 	@OneToMany(mappedBy="order")
 	private List<OrderDetail> orderDetail = new ArrayList<>();
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn
 	@NotNull
 	private User user;
@@ -47,7 +45,6 @@ public class FoodOrder {
 		super();
 	}
 	
-	
 	public FoodOrder(Date orderDate, List<OrderDetail> orderDetail, User user, Address address) {
 		super();
 		this.orderDate = orderDate;
@@ -56,11 +53,16 @@ public class FoodOrder {
 		this.address = address;
 	}
 
+	public FoodOrder(Date orderDate, List<OrderDetail> orderDetail) {
+		super();
+		this.orderDate = orderDate;
+		this.orderDetail = orderDetail;
+	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public Date getOrderDate() {

@@ -9,5 +9,7 @@ import com.cuisine_mart.user.domain.Person;
  */
 @Service
 public interface IPersonService {
-	void create(Person person);
+	public Person create(Person person);
+	public void update(Person person);
+	public void delete(int personId);
 }

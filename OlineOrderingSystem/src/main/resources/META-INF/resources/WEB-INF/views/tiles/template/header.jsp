@@ -8,28 +8,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<style>
-    ul {
-        width: 960px;
-        display: table;
-        table-layout: fixed;
-    }
-    ul li {
-        display: table-cell;
-    }
-    ul li a {
-        display: block;
-    }
-</style>
 
 <section>
     <div class="jumbotron" >
         <div class="container">
-            <ul>
-                <li><a href="/restaurant/list"><h3>Home</h3></a></li>
-                <jsp:include page="/WEB-INF/views/tiles/common/logout.jsp"/>
-            </ul>
-            <%--<h1 style="text-align: center;"> Header Section </h1>--%>
+            <h1 style="text-align: center;"> Header Section </h1>
         </div>
     </div>
 </section>

@@ -15,7 +15,6 @@ public interface IRestaurantService {
     List<Restaurant> findAllByCuisine(CuisineCategory cuisineCategory);
     List<Restaurant> findAllByNameLike(String name);
     List<Restaurant> findAllByDescriptionLike(String description);
-    Restaurant findByLocation(Long addressId);
     List<Restaurant> findAll();
     void save(Restaurant restaurant);
     void update(Restaurant restaurant);

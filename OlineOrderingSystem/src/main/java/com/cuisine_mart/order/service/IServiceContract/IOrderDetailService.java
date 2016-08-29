@@ -9,10 +9,10 @@ import com.cuisine_mart.order.exception.OrderNotFound;
 
 public interface IOrderDetailService {
 	public OrderDetail create(OrderDetail orderDetail);
-	public void delete(Long orderDetailId) throws OrderNotFound;
+	public void delete(int orderDetailId) throws OrderNotFound;
 	public List<OrderDetail> findByDate(Date date) throws OrderNotFound;
 	public List<OrderDetail> findByType(String type) throws OrderNotFound;
 	public List<OrderDetail> findAll();
-	public OrderDetail findById(Long orderDetailId) throws OrderNotFound;
-	public List<OrderDetail> findOrderDetailByOrderId(Long orderId) throws OrderNotFound;
+	public OrderDetail findById(int id) throws OrderNotFound;
+	public List<OrderDetail> findOrderDetailByOrderId(int orderId) throws OrderNotFound;
 }

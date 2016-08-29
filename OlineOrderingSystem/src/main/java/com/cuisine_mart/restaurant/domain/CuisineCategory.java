@@ -8,27 +8,13 @@ import java.util.Date;
  */
 @Entity
 public class CuisineCategory {
-    public CuisineCategory(){
-        super();
-    }
-
-    public CuisineCategory(String name,String description,String image){
-        this.name = name;
-        this.description = description;
-        this.image = image;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cuisineId;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
     private String description;
-
-    private String image;
 
     @Temporal(TemporalType.DATE)
     private Date dateCreated;
@@ -59,6 +45,18 @@ public class CuisineCategory {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
     public String getName() {
         return name;

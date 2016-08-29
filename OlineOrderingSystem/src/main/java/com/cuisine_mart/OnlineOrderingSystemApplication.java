@@ -23,6 +23,8 @@ import com.cuisine_mart.user.domain.Address;
 @ComponentScan(basePackages="com.cuisine_mart.*")
 @EnableAutoConfiguration
 public class OnlineOrderingSystemApplication {
+	@Autowired
+	private static IFoodService foodservice;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineOrderingSystemApplication.class, args);
