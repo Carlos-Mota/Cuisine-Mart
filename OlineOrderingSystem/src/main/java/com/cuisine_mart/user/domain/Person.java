@@ -12,20 +12,39 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 /**
  * @author Sadiksha
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
 public class Person {
 	@Id @GeneratedValue
 	private int personId;
 	private String fristName;
 	private String lastName;
 	private String email;
-	@OneToMany
-	@JoinColumn(name="addressId")
+//	@OneToOne
+//	@JoinColumn(name="User_Id")
+	//private User user;
+	
+	
+	
+	/**
+	 * @param fristName
+	 * @param lastName
+	 * @param email
+	 * @param address
+	 */
+	public Person(String fristName, String lastName, String email, List<Address> address) {
+		super();
+		this.fristName = fristName;
+		this.lastName = lastName;
+		this.email = email;
+		this.address = address;
+	}
+	@OneToMany(mappedBy="person")
 	private List<Address> address = new ArrayList<Address>();
 	
 	public Person(){}
