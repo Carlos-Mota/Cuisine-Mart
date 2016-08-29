@@ -15,7 +15,7 @@ import com.cuisine_mart.order.domain.FoodType;
 import com.cuisine_mart.order.service.IServiceContract.IFoodService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class homeController {
 	@Autowired
 	IFoodService foodService;
