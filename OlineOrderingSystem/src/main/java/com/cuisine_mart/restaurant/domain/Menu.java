@@ -39,10 +39,10 @@ public class Menu {
 
     private String image;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Food> food;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private Restaurant restaurant;
 
     @Temporal(TemporalType.DATE)
