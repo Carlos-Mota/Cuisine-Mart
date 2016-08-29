@@ -26,16 +26,23 @@ public class FoodServiceImpl implements IFoodService {
 
 	@Override
 	public void update(Food food) throws FoodNotFound {
-		
+		create(food);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long foodId) throws FoodNotFound {
+		foodDao.delete(foodId);
 		
 	}
 
 	@Override
-	public void delete(int foodId) throws FoodNotFound {
-		// TODO Auto-generated method stub
+	@Transactional
+	public void delete(Food food) throws FoodNotFound {
+		foodDao.delete(food);
 		
 	}
-
+	
 	@Override
 	public List<Food> findByName(String name) throws FoodNotFound {
 		return foodDao.findFoodByName(name);
@@ -43,20 +50,17 @@ public class FoodServiceImpl implements IFoodService {
 
 	@Override
 	public List<Food> findByType(String type) throws FoodNotFound {
-		// TODO Auto-generated method stub
-		return null;
+		return foodDao.findFoodByType(type);
 	}
 
 	@Override
 	public List<Food> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return foodDao.findAll();
 	}
-
+	
 	@Override
-	public Food findById(int id) throws FoodNotFound {
-		// TODO Auto-generated method stub
-		return null;
+	public Food findById(Long id) throws FoodNotFound {
+		return foodDao.findFoodById(id);
 	}
 	
 

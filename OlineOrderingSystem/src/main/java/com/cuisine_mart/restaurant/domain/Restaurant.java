@@ -11,19 +11,37 @@ import java.util.List;
  */
 @Entity
 public class Restaurant {
+
+    public Restaurant(){
+        super();
+    }
+
+    public Restaurant(String name,String description,String image,List<Address> addressList,
+                      CuisineCategory cuisineCategory,List<Menu> menus){
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.addressList = addressList;
+        this.cuisineCategory = cuisineCategory;
+        this.menus = menus;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long restaurantId;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "addressId", cascade = CascadeType.ALL)
+    private String image;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addressList;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private CuisineCategory cuisineCategory;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)

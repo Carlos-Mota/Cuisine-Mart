@@ -3,61 +3,65 @@ package com.cuisine_mart.order.service.Implementation;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.cuisine_mart.order.dao.IDaoContract.IOrderDao;
 import com.cuisine_mart.order.domain.FoodOrder;
 import com.cuisine_mart.order.exception.OrderNotFound;
+import com.cuisine_mart.order.exception.UserNotFound;
 import com.cuisine_mart.order.service.IServiceContract.IOrderService;
 
 @Service
+@Transactional
 public class OrderServiceImpl implements IOrderService {
+	
+	@Autowired
+	private IOrderDao orderDao;
 
 	@Override
 	public FoodOrder create(FoodOrder order) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.save(order);
 	}
 
 	@Override
 	public void update(FoodOrder order) throws OrderNotFound {
-		// TODO Auto-generated method stub
+		create(order);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Long orderId) throws OrderNotFound {
+		orderDao.delete(orderId);
 		
 	}
 
 	@Override
-	public void delete(int orderId) throws OrderNotFound {
-		// TODO Auto-generated method stub
+	public void delete(FoodOrder order) throws OrderNotFound {
+		orderDao.delete(order);
 		
 	}
 
 	@Override
 	public List<FoodOrder> findByDate(Date date) throws OrderNotFound {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.findOrderByDate(date);
 	}
-
-	@Override
-	public List<FoodOrder> findByType(String type) throws OrderNotFound {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public List<FoodOrder> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.findAll();
 	}
 
 	@Override
-	public FoodOrder findById(int id) throws OrderNotFound {
-		// TODO Auto-generated method stub
-		return null;
+	public FoodOrder findById(Long id) throws OrderNotFound {
+		return orderDao.findOrderById(id);
 	}
 
 	@Override
-	public List<FoodOrder> findOrderByUser(int userId) throws OrderNotFound {
-		// TODO Auto-generated method stub
-		return null;
+	public List<FoodOrder> findOrderByUser(String userName) throws UserNotFound {
+		return orderDao.findUserOrder(userName);
 	}
 
+	
 }
