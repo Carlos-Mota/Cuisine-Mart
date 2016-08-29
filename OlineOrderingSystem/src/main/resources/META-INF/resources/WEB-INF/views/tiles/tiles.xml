@@ -37,7 +37,7 @@
     <!-- User Dash Board -->
     <definition name="userDashBoard" extends="base-definition">
         <put-attribute name="title" value="Home"/>
-        <put-attribute name="body" value="/WEB-INF/views/tiles/restaurant/list.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/tiles/restaurant/RestaurentList.jsp"/>
     </definition>
 
 </tiles-definitions>
