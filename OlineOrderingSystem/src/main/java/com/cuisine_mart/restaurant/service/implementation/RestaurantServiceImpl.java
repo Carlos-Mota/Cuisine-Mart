@@ -43,6 +43,11 @@ public class RestaurantServiceImpl implements IRestaurantService {
     }
 
     @Override
+    public Restaurant findByLocation(Long addressId) {
+        return restaurantDao.findByLocation(addressId);
+    }
+
+    @Override
     @Transactional
     public List<Restaurant> findAll() {
         return restaurantDao.findAll();

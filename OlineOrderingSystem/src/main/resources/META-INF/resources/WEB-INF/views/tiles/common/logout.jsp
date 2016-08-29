@@ -11,12 +11,17 @@
            name="${_csrf.parameterName}"
            value="${_csrf.token}" />
 </form>
-<li style="margin-top: 15px">
-    <a:if test="${pageContext.request.userPrincipal.name != null}">
-       <label> Welcome : ${pageContext.request.userPrincipal.name} |</label>
-    </a:if>
-</li>
-<li><a href="javascript:formSubmit()">Logout</a></li>
+
+<a:if test="${pageContext.request.userPrincipal.name != null}">
+    <li style="margin-top: 15px">
+        <label> Welcome : ${pageContext.request.userPrincipal.name} |</label>
+    </li>
+    <li><a href="javascript:formSubmit()">Logout</a></li>
+</a:if>
+<a:if test="${pageContext.request.userPrincipal.name == null}">
+    <li><a href="/login">Login</a></li>
+</a:if>
+
 <script>
     function formSubmit() {
         document.getElementById("logoutForm").submit();
