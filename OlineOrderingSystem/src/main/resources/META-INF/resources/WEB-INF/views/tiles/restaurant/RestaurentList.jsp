@@ -13,24 +13,23 @@
     </head>
     <body>
         <section class="container">
+        	<h1>Restaurents</h1>
             <div class="row">
-                <c:forEach items="${restaurants}" var="product"> 
+                <c:forEach items="${restaurants}" var="Restaurant"> 
                     <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
                         <div class="thumbnail">
-                            <div class="col-md-5">
+<%--                             <div class="col-md-5">
                                 <img src='<c:url value="/resources/images/${restaurants.image}.jpg">
                                      </c:url>'
                                      alt="image" style = "width:100%"/>
-                            </div>
+                            </div> --%>
                             <div class="caption">
-                                <h3>${restaurants.name}</h3>
-                                <p>${restaurants.cuisineCategory}</p>
+                                <h3>${Restaurant.name}</h3>
+                                <p>${Restaurant.cuisineCategory.name}</p> 
+                                <p>${Restaurant.restaurantId}</p>
                                
                             </div>
-                            <input type="button" value="Details" onclick="location.href = '<c:url value='/restaurant/details/${restaurants.restaurantId}'/>'" class="btn btn-primary">
-                                <a href="#" class="btn btn-warning btn-large" onclick="location.href = '<c:url value='/addtocart/${product.productId}/${product.productCategory.categoryId}'/>'">
-                                      <span class="glyphicon-shopping-cart glyphicon"></span> Add to Cart
-                                    </a> 
+                             <input type="button" value="Details" onclick="location.href = '<c:url value='/restaurant/details/${Restaurant.restaurantId}'/>'" class="btn btn-primary">
                         </div>
                     </div>
                 </c:forEach>

@@ -34,6 +34,7 @@ public class homeController {
 	public String userDashBoard(ModelMap modelMap) {
         List<Restaurant> restaurants = restaurantService.findAll();
         modelMap.addAttribute("restaurants",restaurants);
+
 		return "userDashBoard";
 	}
 }

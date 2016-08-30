@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <html>
 <head>
     <%--<link href="/restaurant/restaurantList.css" rel="stylesheet" type="text/css"/>--%>
@@ -29,6 +32,8 @@
     </style>
 </head>
 <body>
+
+<section class="container" ng-app="cartApp">
 <div class="heading_allcap_c1">${restaurant.name}</div>
 <div class="box-table">
     <table>
@@ -96,6 +101,7 @@
                                                 <td>Name</td>
                                                 <td>Description</td>
                                                 <td>Type</td>
+                                                <td>Price</td>
                                                 <td>Action</td>
                                             </tr>
                                             <c:forEach items="${menu.food}" var="food">
@@ -103,7 +109,16 @@
                                                     <td>${food.name}</td>
                                                     <td>${food.description}</td>
                                                     <td>${food.type}</td>
-                                                    <td><a href="#" >Add to Cart</a> </td>
+                                                    <td>${food.price}</td>
+                                                    <td>    <p ng-controller="cartCtrl">
+    	<a href="#" class="btn btn-warning btn-large" ng-click="addToCart('${food.id}')">
+    		<span class="glyphicon-hand-right glyphicon"/>Add To Cart
+    	</a>
+    	
+    	<a href="<spring:url value='/cart'/>" class="btn btn-default">
+    		<span class="glyphicon-hand-right glyphicon"></span>
+    	</a>
+    </p> </td>
                                                 </tr>
                                             </c:forEach>
                                         </table>
@@ -119,6 +134,6 @@
 
 </div>
 
-
+</section>
 </body>
 </html>

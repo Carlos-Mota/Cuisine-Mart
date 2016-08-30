@@ -112,4 +112,13 @@ public class Restaurant {
     public void setCuisineCategory(CuisineCategory cuisineCategory) {
         this.cuisineCategory = cuisineCategory;
     }
+
+	public Long getRestaurantId() {
+		return restaurantId;
+	}
+
+	public void setRestaurantId(Long restaurantId) {
+		this.restaurantId = restaurantId;
+	}
+    
 }

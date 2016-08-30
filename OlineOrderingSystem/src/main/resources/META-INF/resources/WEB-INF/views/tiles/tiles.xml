@@ -51,5 +51,11 @@
         <put-attribute name="title" value="Home"/>
         <put-attribute name="body" value="/WEB-INF/views/tiles/restaurant/RestaurentList.jsp"/>
     </definition>
+    
+    <!-- Cart -->
+    <definition name="orderCart" extends="base-definition">
+    	<put-attribute name="little" value="OrderCart"/>
+    	<put-attribute name="body" value="/WEB-INF/tiles/restaurant/cart.jsp" />
+    </definition>
 
 </tiles-definitions>
