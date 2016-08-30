@@ -32,10 +32,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User{
-	@Id
-	@GeneratedValue
-	private int userId;	
-	
+//	@Id
+//	@GeneratedValue
+//	private int userId;	
+//	
 	@Column(name="UserName",nullable=false)
 	private String username;
 	@Column(name="Password",nullable=false)
@@ -53,19 +53,20 @@ public class User{
 	public User() {
 		super();
 	}
-	/**
-	 * @return the userId
-	 */
-	public int getUserId() {
-		return userId;
-	}
-
-	/**
-	 * @param userId the userId to set
-	 */
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+//	}
+//	/**
+//	 * @return the userId
+//	 */
+//	public int getUserId() {
+//		return userId;
+//	}
+//
+//	/**
+//	 * @param userId the userId to set
+//	 */
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
 
 /*	*//**
 	 * @return the person
@@ -95,10 +96,11 @@ public class User{
 		this.email = email;
 	}
 
-	public User(String username, String password, boolean enabled) {
+	public User(String username, String password,String email, boolean enabled) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
+		this.email = email;
 //		this.userRole = userRole;
 	}
 

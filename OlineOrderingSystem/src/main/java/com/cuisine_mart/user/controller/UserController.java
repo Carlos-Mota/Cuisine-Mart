@@ -19,4 +19,6 @@ public class UserController {
 	@Autowired
 	UserServiceImpl userServiceImpl;
 	
+	//@RequestMapping(value=)
+	
 	}

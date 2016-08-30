@@ -57,22 +57,21 @@ public class SignupController {
         addList.add(address1);
         addList.add(address2);
         Person person = new Person(userInfoBean.getFirstName(), userInfoBean.getLastName(),userInfoBean.getEmail(),addList);
-        //For Test Only
-        //person.setPersonId(1);
-             
         Person p = personService.create(person);
-        User user = new User(userInfoBean.getUserName(),userInfoBean.getPassword(),false);
+        User user = new User(userInfoBean.getUserName(),userInfoBean.getPassword(),userInfoBean.getEmail(),true);
         User savedUser =  userService.saveNewUser(user);
         UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getUserName()),"ROLE_USER");
         System.out.println(userInfoBean.getUserName());        
         
-        //user.setPersonId(p.getPersonId());
-        // For Test Purpose
-        //user.setUserId(1);
         userService.saveUserRole(userRole);
         savedUser.setUserRole(userRole);
         userService.saveNewUser(savedUser);
         model.addAttribute("user", new User());
         return "redirect:/thankyou";
+    }
+    
+    public User saveUser(User user){
+    	return userService.saveNewUser(user);
+    	
     }
 }
