@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Column;
@@ -50,7 +51,7 @@ public class UserRole{
 		this.userRoleId = userRoleId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "username", nullable = false)
 	public User getUser() {
 		return this.user;

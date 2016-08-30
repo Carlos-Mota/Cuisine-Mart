@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cuisine_mart.user.dao.IDaoContract.IUserDAO;
+import com.cuisine_mart.user.dao.IDaoContract.IUserRoleDao;
 import com.cuisine_mart.user.domain.User;
+import com.cuisine_mart.user.domain.UserRole;
 import com.cuisine_mart.user.service.IServiceContract.IUserService;
 /**
  * @author Sadiksha
@@ -17,9 +19,13 @@ public class UserServiceImpl implements IUserService{
 	
 	@Autowired
 	IUserDAO userDAO;
+	
+	@Autowired
+	IUserRoleDao userRoleDao;
+	
 	@Override
-	public void saveNewUser(User user) {
-		userDAO.save(user);
+	public User saveNewUser(User user) {
+		return userDAO.save(user);
 	}
 
 	@Override
@@ -72,6 +78,15 @@ public class UserServiceImpl implements IUserService{
 		user.setEnabled(true);
 		userDAO.save(user);
 		return user.getUsername();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cuisine_mart.user.service.IServiceContract.IUserService#saveUserRole(com.cuisine_mart.user.domain.UserRole)
+	 */
+	@Override
+	public void saveUserRole(UserRole userRole) {
+		userRoleDao.save(userRole);
+		
 	}
 
 }

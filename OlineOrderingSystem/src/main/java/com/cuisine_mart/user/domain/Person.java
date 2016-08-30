@@ -3,6 +3,7 @@ package com.cuisine_mart.user.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -44,8 +45,8 @@ public class Person {
 		this.email = email;
 		this.address = address;
 	}
-	@OneToMany(mappedBy="person")
-	private List<Address> address = new ArrayList<Address>();
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Address> address;
 	
 	public Person(){}
 	public int getPersonId() {

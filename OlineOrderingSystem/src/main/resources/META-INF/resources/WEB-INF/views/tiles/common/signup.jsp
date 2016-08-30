@@ -60,7 +60,7 @@
 				</tr>
 				<tr>
 					<td>Last Name:</td>
-					<td><input type='text' name='lastname' value=''
+					<td><input type='text' name='lastName' value=''
 						required="required"></td>
 				</tr>
 				<tr>
@@ -90,18 +90,18 @@
 				</tr>
 				<tr>
 					<td>User Name:</td>
-					<td><input type='text' name='username' value=''
+					<td><input type='text' name='userName' value=''
 						required="required"></td>
 				</tr>
 
 
 				<tr>
 					<td>Password:</td>
-					<td><input type='password' name='password' required="required" /></td>
+					<td><input type='password' id="password" name='password' required="required" /></td>
 				</tr>
 				<tr>
 					<td>Confirm Password:</td>
-					<td><input type='password' name='password' required="required" /></td>
+					<td><input type='password' id="matchPassword" name='matchPassword' required="required" /></td>
 				</tr>
 
 				<tr>

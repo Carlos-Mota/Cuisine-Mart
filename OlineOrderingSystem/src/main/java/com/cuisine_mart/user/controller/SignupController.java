@@ -20,6 +20,7 @@ import com.cuisine_mart.beans.UserInfoBean;
 import com.cuisine_mart.user.domain.Address;
 import com.cuisine_mart.user.domain.Person;
 import com.cuisine_mart.user.domain.User;
+import com.cuisine_mart.user.domain.UserRole;
 import com.cuisine_mart.user.service.IServiceContract.IAddressService;
 import com.cuisine_mart.user.service.IServiceContract.IPersonService;
 import com.cuisine_mart.user.service.IServiceContract.IUserService;
@@ -57,14 +58,20 @@ public class SignupController {
         addList.add(address2);
         Person person = new Person(userInfoBean.getFirstName(), userInfoBean.getLastName(),userInfoBean.getEmail(),addList);
         //For Test Only
-        person.setPersonId(1);
+        //person.setPersonId(1);
              
         Person p = personService.create(person);
         User user = new User(userInfoBean.getUserName(),userInfoBean.getPassword(),false);
+        User savedUser =  userService.saveNewUser(user);
+        UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getUserName()),"ROLE_USER");
+        System.out.println(userInfoBean.getUserName());        
+        
         //user.setPersonId(p.getPersonId());
         // For Test Purpose
-        user.setUserId(1);
-        userService.saveNewUser(user);
+        //user.setUserId(1);
+        userService.saveUserRole(userRole);
+        savedUser.setUserRole(userRole);
+        userService.saveNewUser(savedUser);
         model.addAttribute("user", new User());
         return "redirect:/thankyou";
     }

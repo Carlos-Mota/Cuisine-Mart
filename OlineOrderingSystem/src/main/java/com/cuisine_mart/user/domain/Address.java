@@ -18,9 +18,6 @@ public class Address {
 	private String state;
 	private String zip;
 	private String phoneNo;
-	@ManyToOne
-	@JoinColumn(name="personId")
-	private Person person;
 	
 	public Address(){}
 	

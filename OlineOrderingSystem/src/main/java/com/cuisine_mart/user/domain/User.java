@@ -15,6 +15,8 @@ import com.cuisine_mart.order.domain.FoodOrder;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +24,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 /**
  * @author Sadiksha
  *
@@ -41,12 +44,12 @@ public class User{
 	private boolean enabled;
 	@Column(name="Email")
 	private String email;
-	@ElementCollection
-	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 	@OneToOne
 	@JoinColumn(name="Person_Id")
 //	@OneToOne(mappedBy="user")	
 	private Person person;
+	private UserRole userRole;
+	
 	public User() {
 		super();
 	}
@@ -96,15 +99,10 @@ public class User{
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
+//		this.userRole = userRole;
 	}
 
-	public User(String username, String password, boolean enabled, Set<UserRole> userRole) {
-		this.username = username;
-		this.password = password;
-		this.enabled = enabled;
-		this.userRole = userRole;
-	}
-
+	
 	@Id
 	@Column(name = "username", unique = true, nullable = false, length = 45)
 	public String getUsername() {
@@ -133,12 +131,12 @@ public class User{
 		this.enabled = enabled;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set<UserRole> getUserRole() {
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+	public UserRole getUserRole() {
 		return this.userRole;
 	}
 
-	public void setUserRole(Set<UserRole> userRole) {
+	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
 
