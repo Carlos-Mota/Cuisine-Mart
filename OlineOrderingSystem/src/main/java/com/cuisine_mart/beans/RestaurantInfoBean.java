@@ -7,6 +7,23 @@ import org.springframework.stereotype.Component;
  */
 @Component("RestaurantMenuBean")
 public class RestaurantInfoBean {
+    public RestaurantInfoBean(){
+        super();
+    }
+
+    public RestaurantInfoBean(String name,String description,String street,String city,String zip,String state,
+                              String phoneNumber,Long id){
+        this.name = name;
+        this.description = description;
+        this.street = street;
+        this.city = city;
+        this.zip = zip;
+        this.state = state;
+        this.id = id;
+    }
+
+    private Long id;
+
     private String name;
     private String description;
     private String street;
@@ -14,10 +31,17 @@ public class RestaurantInfoBean {
     private String zip;
     private String state;
     private String phoneNumber;
-
     private Long cuisineId;
 
     private String image;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getImage() {
         return image;
