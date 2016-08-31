@@ -26,6 +26,7 @@ public class OrderController {
 /*		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<Address> address = user.getPerson().getAddress();
 		model.addAttribute("Address", address);*/
+		model.addAttribute("OrderAddress",new Address());
 		return "orderAddress";
 	}
 

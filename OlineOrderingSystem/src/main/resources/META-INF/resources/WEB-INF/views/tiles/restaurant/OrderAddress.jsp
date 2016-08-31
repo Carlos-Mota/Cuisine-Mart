@@ -25,10 +25,10 @@ body { padding-top:30px; }
                     <td>Order Delivery Address:
                         <select id="address" name="deliveryId">
                             <option selected="selected">--Select--</option>
-                            <c:forEach items="${Address}" var="address">
+<%--                             <c:forEach items="${Address}" var="address">
                                 <option value="${address.getAddressId()}">${address.getAddressId()}</option>
                             </c:forEach>
-                        </select>
+                        </select> --%>
                     </td>
                     <td><button type="button" class="btn btn-primary" onclick="clear()">New Address</button></td>
                 </tr>
@@ -36,28 +36,28 @@ body { padding-top:30px; }
 
         </div>
         <div id="addAddress" style="display: none;">
-            <input type="hidden"
+<%--             <input type="hidden"
                    name="${_csrf.parameterName}"
-                   value="${_csrf.token}" />
+                   value="${_csrf.token}" /> --%>
             <section class="container">
                 <h4>New Delivery Address</h4>
                 <div class="container">
 				    <div class="row">
 				        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
-				            <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-globe"></i></a> Sign up!</legend>
+				            <legend> Order Address!</legend>
 				            <form:form action="#" modelAttribute="OrderAddress" method="post" class="form" role="form">
 				            <div class="row">
 				                <div class="col-xs-6 col-md-6">
-				                    <form:input class="form-control" name="street" placeholder="Street" type="text" id="street"
-				                        required autofocus />
+				                    <form:input class="form-control" path="street" name="street" placeholder="Street" type="text" id="street"
+				                        required="autofocus"/>
 				                </div>
 				                <div class="col-xs-6 col-md-6">
-				                    <form:input class="form-control" name="city" placeholder="City" type="text" id="city" required />
+				                    <form:input class="form-control" path="city" name="city" placeholder="City" type="text" id="city"  />
 				                </div>
 				            </div>
-				            <form:input class="form-control" name="state" placeholder="State" id="state" type="text" />
-				            <form:input class="form-control" name="zip" placeholder="ZipCode" id="zip" type="text" />
-				            <form:input class="form-control" name="phoneNo" placeholder="Phone" id="phoneNo" type="text" />
+				            <form:input class="form-control" path="state" name="state" placeholder="State" id="state" type="text" />
+				            <form:input class="form-control" path="zip" name="zip" placeholder="ZipCode" id="zip" type="text" />
+				            <form:input class="form-control" path="phoneNo" name="phoneNo" placeholder="Phone" id="phoneNo" type="text" />
 				            
 				            <br />
 				            <br />
