@@ -1,11 +1,14 @@
 package com.cuisine_mart.user.service.Implementation;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cuisine_mart.user.dao.IDaoContract.IPersonDAO;
+import com.cuisine_mart.user.domain.Address;
 import com.cuisine_mart.user.domain.Person;
 import com.cuisine_mart.user.service.IServiceContract.IPersonService;
 /**
@@ -18,6 +21,7 @@ public class PersonServiceImpl implements IPersonService {
 
 	@Autowired
 	IPersonDAO personDAO;
+	
 	
 	@Override
 	public Person create(Person person) {
@@ -42,6 +46,13 @@ public class PersonServiceImpl implements IPersonService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Person findPersonById(int personId) {
+		 return personDAO.findPersonById(personId);
+	}
+
+
 
 
 }

@@ -15,10 +15,12 @@ public class Cart {
     private String cartId;
     private Map<Long, CartItem> cartItems;
     private Double grandTotal;
+    private int totalItems=0;
 
     public Cart() {
         cartItems = new HashMap<>();
         grandTotal = new Double(0);
+        totalItems = 0;
     }
 
     public Cart(String cartId) {
@@ -42,7 +44,19 @@ public class Cart {
         this.cartItems = cartItems;
     }
 
-    public Double getGrandTotal() {
+    public int getTotalItems() {
+		return totalItems;
+	}
+
+	public void setTotalItems(int totalItems) {
+		this.totalItems = totalItems;
+	}
+
+	public void setGrandTotal(Double grandTotal) {
+		this.grandTotal = grandTotal;
+	}
+
+	public Double getGrandTotal() {
         return grandTotal;
     }
 
@@ -70,6 +84,7 @@ public class Cart {
         
         for(CartItem item: cartItems.values()){
             grandTotal = grandTotal + item.getTotalPrice();
+            ++totalItems;
         }
     }
 
