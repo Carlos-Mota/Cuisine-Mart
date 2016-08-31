@@ -65,8 +65,8 @@ public class SignupController {
         addList.add(address1);
         Person person = new Person(userInfoBean.getFirstName(), userInfoBean.getLastName(),userInfoBean.getEmail(),addList);
         Person p = personService.create(person);
-        User user = new User(userInfoBean.getUserName(),userInfoBean.getPassword(),userInfoBean.getEmail(),false);
-        User savedUser =  saveUser(user);
+        User user = new User(userInfoBean.getUserName(),userInfoBean.getPassword(),userInfoBean.getEmail(),false,p.getPersonId());
+        User savedUser =  userService.saveNewUser(user);	
         UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getUserName()),"ROLE_USER");
         System.out.println(userInfoBean.getUserName());    
         userService.saveUserRole(userRole);
@@ -75,16 +75,8 @@ public class SignupController {
         model.addAttribute("user", new User());
         return "redirect:/thankyou";
     }
-    
-    public User saveUser(User user){
-    	System.out.println("test");
-    	return userService.saveNewUser(user);		
-    	
-    }
-    
-    
-    
-    @RequestMapping(value="/validateUser/{username}", method= RequestMethod.POST)
+        
+    @RequestMapping(value="/validateUser/{username}", method= RequestMethod.GET)
 	public String userValidation(@PathVariable String username, Model model){
 		User usr = userService.getUserByUsername(username);
 		usr.setEnabled(true);

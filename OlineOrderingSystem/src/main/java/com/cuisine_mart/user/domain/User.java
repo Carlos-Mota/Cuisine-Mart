@@ -68,11 +68,12 @@ public class User{
 		this.email = email;
 	}
 
-	public User(String username, String password,String email, boolean enabled) {
+	public User(String username, String password,String email, boolean enabled, Long person) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 		this.email = email;
+		this.person = person;
 	}
 
 	

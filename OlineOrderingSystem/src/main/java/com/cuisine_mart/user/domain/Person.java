@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Person {
 	@Id @GeneratedValue
-	private int personId;
+	private Long personId;
 	private String fristName;
 	private String lastName;
 	private String email;
@@ -42,10 +42,10 @@ public class Person {
 	private List<Address> address;
 	
 	public Person(){}
-	public int getPersonId() {
+	public Long getPersonId() {
 		return personId;
 	}
-	public void setPersonId(int personId) {
+	public void setPersonId(Long personId) {
 		this.personId = personId;
 	}
 	public List<Address> getAddress() {
