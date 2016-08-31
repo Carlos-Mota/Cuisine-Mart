@@ -12,7 +12,7 @@ public class RestaurantInfoBean {
     }
 
     public RestaurantInfoBean(String name,String description,String street,String city,String zip,String state,
-                              String phoneNumber,Long id){
+                              String phoneNumber,Long id,Long cuisineId,String email){
         this.name = name;
         this.description = description;
         this.street = street;
@@ -20,8 +20,15 @@ public class RestaurantInfoBean {
         this.zip = zip;
         this.state = state;
         this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.cuisineId = cuisineId;
+        this.email = email;
+
     }
 
+
+
+    private String email;
     private Long id;
 
     private String name;
@@ -34,6 +41,14 @@ public class RestaurantInfoBean {
     private Long cuisineId;
 
     private String image;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
