@@ -55,13 +55,13 @@ public class RestaurantServiceImpl implements IRestaurantService {
 
     @Override
     @Transactional
-    public void save(Restaurant restaurant){
-        restaurantDao.save(restaurant);
+    public Restaurant save(Restaurant restaurant){
+        return restaurantDao.save(restaurant);
     }
 
     @Override
-    public void update(Restaurant restaurant) {
-        save(restaurant);
+    public Restaurant update(Restaurant restaurant) {
+        return save(restaurant);
     }
 
     @Override

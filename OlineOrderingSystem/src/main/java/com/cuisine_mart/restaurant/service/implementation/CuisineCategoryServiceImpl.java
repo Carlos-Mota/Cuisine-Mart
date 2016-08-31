@@ -18,6 +18,11 @@ public class CuisineCategoryServiceImpl implements ICuisineCategoryService {
     ICuisineDao cuisineDao;
 
     @Override
+    public CuisineCategory get(Long id) {
+        return cuisineDao.findOne(id);
+    }
+
+    @Override
     @Transactional
     public List<CuisineCategory> findAll() {
         return cuisineDao.findAll();
@@ -37,8 +42,8 @@ public class CuisineCategoryServiceImpl implements ICuisineCategoryService {
 
     @Override
     @Transactional
-    public void save(CuisineCategory cuisineCategory) {
-        cuisineDao.save(cuisineCategory);
+    public CuisineCategory save(CuisineCategory cuisineCategory) {
+        return cuisineDao.save(cuisineCategory);
     }
 
     @Override
@@ -53,7 +58,7 @@ public class CuisineCategoryServiceImpl implements ICuisineCategoryService {
     }
 
     @Override
-    public void update(CuisineCategory cuisineCategory) {
-        save(cuisineCategory);
+    public CuisineCategory update(CuisineCategory cuisineCategory) {
+        return save(cuisineCategory);
     }
 }

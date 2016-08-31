@@ -15,8 +15,8 @@ public interface IMenuService {
     List<Menu> findAllByRestaurant(Restaurant restaurant);
     List<Menu> findAllByNameLike(String name);
     List<Menu> findAllByDescriptionLike(String description);
-    void create(Menu menu);
-    void update(Menu menu);
+    Menu create(Menu menu);
+    Menu update(Menu menu);
     void delete(Menu menu);
     void delete(Long id);
 }

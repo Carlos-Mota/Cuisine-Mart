@@ -10,11 +10,12 @@ import java.util.List;
  */
 @Service
 public interface ICuisineCategoryService {
+    CuisineCategory get(Long id);
     List<CuisineCategory> findAll();
     List<CuisineCategory> findAllByNameLike(String name);
     List<CuisineCategory> findAllByDescriptionLike(String description);
-    void save(CuisineCategory cuisineCategory);
+    CuisineCategory save(CuisineCategory cuisineCategory);
     void delete(CuisineCategory cuisineCategory);
     void delete(Long id);
-    void update(CuisineCategory cuisineCategory);
+    CuisineCategory update(CuisineCategory cuisineCategory);
 }

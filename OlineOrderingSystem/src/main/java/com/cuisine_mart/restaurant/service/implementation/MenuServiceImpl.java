@@ -48,13 +48,13 @@ public class MenuServiceImpl implements IMenuService {
 
     @Override
     @Transactional
-    public void create(Menu menu) {
-        iMenuDao.save(menu);
+    public Menu create(Menu menu) {
+        return iMenuDao.save(menu);
     }
 
     @Override
-    public void update(Menu menu) {
-        create(menu);
+    public Menu update(Menu menu) {
+        return create(menu);
     }
 
     @Override
