@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+    <link rel="stylesheet"
+          href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <%--<link href="/restaurant/restaurantList.css" rel="stylesheet" type="text/css"/>--%>
     <style>
         .box-table
@@ -38,10 +40,15 @@
             display: table-row;
         }
     </style>
+    <script>
+        function confirmDelete(){
+            return confirm("Are you sure to delete?");
+        }
+    </script>
 </head>
 <body>
 <section class="container">
-    <div id="mainHolder">
+    <div id="mainHolder" class="thumbnail">
         <div class="menuHolder">
             <div class="heading_allcap_c1">Restaurants: </div>
             <div><a href="/admin/addRestaurant"><h4>Add new Restaurant</h4></a> </div>
@@ -61,7 +68,8 @@
                                             <div>
                                                 <table>
                                                     <tr>
-                                                        <td><a href="#">${restaurant.name}</a></td>
+                                                        <td><a href="/admin/editRestaurant/${restaurant.id}">${restaurant.name}</a></td>
+                                                        <td><a onclick="return confirmDelete();" href="/admin/deleteRestaurant/${restaurant.id}">Delete</a></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -94,7 +102,8 @@
                                             <div>
                                                 <table>
                                                     <tr>
-                                                        <td><a href="#">${menu.name}</a></td>
+                                                        <td><a href="/admin/editMenu/${menu.getId()}">${menu.name}</a></td>
+                                                        <td><a onclick="return confirmDelete();" href="/admin/deleteMenu/${menu.getId()}">Delete</a></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -127,7 +136,8 @@
                                             <div>
                                                 <table>
                                                     <tr>
-                                                        <td><a href="#">${food.name}</a></td>
+                                                        <td><a href="/admin/editFood/${food.id}">${food.name}</a></td>
+                                                        <td><a onclick="return confirmDelete();" href="/admin/deleteFood/${food.id}">Delete</a></td>
                                                     </tr>
                                                 </table>
                                             </div>

@@ -81,6 +81,10 @@ public class Menu {
 
     public Long getId(){return this.menuId; }
 
+    public void setId(Long id) {
+        this.menuId = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -92,4 +96,12 @@ public class Menu {
     public Restaurant getRestaurant(){ return this.restaurant; }
 
     public void setRestaurant(Restaurant restaurant) {this.restaurant = restaurant; }
+
+    public void removeFood(Food food){
+        this.food.remove(food);
+    };
+
+    public void addFood(Food food){
+        this.food.add(food);
+    }
 }

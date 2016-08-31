@@ -21,4 +21,7 @@ public interface IMenuDao extends JpaRepository<Menu,Long> {
 
     @Query("from Menu c where c.description like CONCAT('%',:description,'%')")
     List<Menu> findAllByDescriptionLike(@Param("description") String description);
+
+    @Query("from Menu m join m.food f where f.id=:foodId")
+    Menu findByFood(@Param("foodId") Long foodId);
 }

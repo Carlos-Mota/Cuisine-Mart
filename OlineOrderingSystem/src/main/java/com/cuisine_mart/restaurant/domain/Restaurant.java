@@ -1,6 +1,7 @@
 package com.cuisine_mart.restaurant.domain;
 
 import com.cuisine_mart.user.domain.Address;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -37,10 +38,13 @@ public class Restaurant {
 
     private String image;
 
+    @Email(message="Please provide a valid email address")
+    private String email;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addressList;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name = "category_id", nullable = false)
     private CuisineCategory cuisineCategory;
 
@@ -120,5 +124,21 @@ public class Restaurant {
 	public void setRestaurantId(Long restaurantId) {
 		this.restaurantId = restaurantId;
 	}
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     
 }

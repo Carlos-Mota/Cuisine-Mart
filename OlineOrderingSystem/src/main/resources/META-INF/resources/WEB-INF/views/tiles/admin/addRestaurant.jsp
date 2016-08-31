@@ -36,6 +36,7 @@
     <input type="hidden"
            name="${_csrf.parameterName}"
            value="${_csrf.token}" />
+    <input type="hidden" name="id" value="${restaurantInfoBean.id}"/>
     <section class="container">
         <h4>Add Restaurant</h4>
         <table>
@@ -45,16 +46,21 @@
                         <table>
                             <tr>
                                 <td> Name: </td>
-                                <td><input type="text" name="name" required="required"/> </td>
+                                <td><input value="${restaurantInfoBean.name}" type="text" name="name" required="required"/> </td>
                             </tr>
                             <tr>
                                 <td> Description: </td>
-                                <td> <input type="text" name="description" required="required" /> </td>
+                                <td> <input value="${restaurantInfoBean.description}" type="text" name="description" required="required" /> </td>
+                            </tr>
+                            <tr>
+                                <td> Email: </td>
+                                <td> <input value="${restaurantInfoBean.email}" type="text" name="email" required="required" /> </td>
                             </tr>
                             <tr>
                                 <td> Cuisine Category: </td>
                                 <td> <select name="cuisineId" required="required"><c:forEach items="${cuisines}" var="cuisine">
-                                        <option value="${cuisine.getId()}">${cuisine.getName()}</option>
+                                        <option ${restaurantInfoBean.cuisineId!=null ? 'selected="selected"' : ''}
+                                                value="${cuisine.getId()}">${cuisine.getName()}</option>
                                     </c:forEach></select>
                                 </td>
                             </tr>
@@ -70,22 +76,22 @@
                         <table>
                             <tr>
                                 <td>State: </td>
-                                <td><input required="required" type="text" name="state"/></td>
+                                <td><input value="${restaurantInfoBean.state}" required="required" type="text" name="state"/></td>
                             </tr>
                             <tr>
                                 <td>City: </td>
-                                <td><input required="required" type="text" name="city"/></td>
+                                <td><input value="${restaurantInfoBean.city}" required="required" type="text" name="city"/></td>
                             </tr>
                             <tr>
                                 <td>Street: </td>
-                                <td><input required="required" type="text" name="street"/></td>
+                                <td><input value="${restaurantInfoBean.street}" required="required" type="text" name="street"/></td>
                             </tr>
                                 <td>Zip: </td>
-                                <td><input required="required" type="text" name="zip"/></td>
+                                <td><input value="${restaurantInfoBean.zip}" required="required" type="text" name="zip"/></td>
                             </tr>
                             </tr>
                                 <td>Phone: </td>
-                                <td><input required="required" type="text" name="phoneNumber"/></td>
+                                <td><input value="${restaurantInfoBean.phoneNumber}" required="required" type="text" name="phoneNumber"/></td>
                             </tr>
                         </table>
                     </div>

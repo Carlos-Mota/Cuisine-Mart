@@ -11,10 +11,12 @@ import java.util.List;
  */
 @Service
 public interface IMenuService {
+    Menu get(Long id);
     List<Menu> findAll();
     List<Menu> findAllByRestaurant(Restaurant restaurant);
     List<Menu> findAllByNameLike(String name);
     List<Menu> findAllByDescriptionLike(String description);
+    Menu findByFood(Long foodId);
     Menu create(Menu menu);
     Menu update(Menu menu);
     void delete(Menu menu);

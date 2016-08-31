@@ -32,6 +32,7 @@
     }
 </style>
 <script type="text/javascript">
+    window.onload = showHide;
     function showHide(){
         var input = document.getElementById("restaurant").value;
         if(input=="--Select--"){
@@ -45,6 +46,7 @@
 <section class="container">
 
     <form:form name="addMenuForm" modelAttribute="menu"  action="/admin/saveMenu" method="post">
+        <input type="hidden" name="menuId" value="${menu.id}"/>
         <div>
             <table>
                 <tr>
@@ -52,16 +54,16 @@
                         <select id="restaurant" name="restaurantId" onchange="showHide();">
                             <option selected="selected">--Select--</option>
                             <c:forEach items="${restaurants}" var="restaurant">
-                                <option value="${restaurant.getId()}">${restaurant.getName()}</option>
+                                <option ${menu.restaurant==restaurant ? 'selected="selected"' : ''}
+                                        value="${restaurant.getId()}">${restaurant.getName()}</option>
                             </c:forEach>
                         </select>
                     </td>
                     <td></td>
                 </tr>
             </table>
-
         </div>
-        <div id="addMenu" style="display: none;">
+        <div id="addMenu" <%--style="display: none;"--%>>
             <input type="hidden"
                    name="${_csrf.parameterName}"
                    value="${_csrf.token}" />
@@ -74,11 +76,11 @@
                                 <table>
                                     <tr>
                                         <td> Name: </td>
-                                        <td><input type="text" name="name" required="required"/> </td>
+                                        <td><input value="${menu.name}" type="text" name="name" required="required"/> </td>
                                     </tr>
                                     <tr>
                                         <td> Description: </td>
-                                        <td> <input type="text" name="description" required="required" /> </td>
+                                        <td> <input value="${menu.description}" type="text" name="description" required="required" /> </td>
                                     </tr>
                                 </table>
                             </div>

@@ -26,7 +26,7 @@
     <div class="jumbotron" >
         <div class="container">
             <ul>
-                <li><a href="/restaurant/list"><h3>Home</h3></a></li>
+                <li><a href="/admin/dashboard"><h3>Home</h3></a></li>
                 <jsp:include page="/WEB-INF/views/tiles/common/logout.jsp"/>
             </ul>
             <%--<h1 style="text-align: center;"> Header Section </h1>--%>

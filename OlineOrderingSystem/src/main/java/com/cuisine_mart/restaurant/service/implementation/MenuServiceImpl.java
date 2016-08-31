@@ -22,6 +22,11 @@ public class MenuServiceImpl implements IMenuService {
     }
 
     @Override
+    public Menu get(Long id) {
+        return iMenuDao.findOne(id);
+    }
+
+    @Override
     @Transactional
     public List<Menu> findAll() {
         return iMenuDao.findAll();
@@ -44,6 +49,11 @@ public class MenuServiceImpl implements IMenuService {
     @Transactional
     public List<Menu> findAllByDescriptionLike(String description) {
         return iMenuDao.findAllByDescriptionLike(description);
+    }
+
+    @Override
+    public Menu findByFood(Long foodId) {
+        return iMenuDao.findByFood(foodId);
     }
 
     @Override

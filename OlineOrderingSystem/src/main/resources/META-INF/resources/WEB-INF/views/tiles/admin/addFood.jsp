@@ -32,6 +32,7 @@
     }
 </style>
 <script type="text/javascript">
+    window.onload = showHide;
     function showHide(){
         var restaurant = document.getElementById("restaurant").value;
         var menu = document.getElementById("menu").value;
@@ -46,7 +47,8 @@
 
 <section class="container">
 
-    <form:form name="addMenuForm" modelAttribute="menu"  action="/admin/saveFood" method="post">
+    <form:form name="addMenuForm" modelAttribute="food"  action="/admin/saveFood" method="post">
+        <input type="hidden" name="foodId" value="${food.id}"/>
         <div>
             <table>
                 <tr>
@@ -54,15 +56,17 @@
                         <select id="restaurant" name="restaurantId" onchange="showHide();">
                             <option selected="selected">--Select--</option>
                             <c:forEach items="${restaurants}" var="restaurant">
-                                <option value="${restaurant.getId()}">${restaurant.getName()}</option>
+                                <option ${menu.restaurant==restaurant ? 'selected="selected"' : ''}
+                                        value="${restaurant.getId()}">${restaurant.getName()}</option>
                             </c:forEach>
                         </select>
                     </td>
                     <td>Select Menu:
-                        <select id="menu" name="restaurantId" onchange="showHide();">
+                        <select id="menu" name="menuId" onchange="showHide();">
                             <option selected="selected">--Select--</option>
                             <c:forEach items="${menus}" var="menu">
-                                <option value="${menu.getId()}">${menu.getName()}</option>
+                                <option ${menu==menu ? 'selected="selected"' : ''}
+                                        value="${menu.getId()}">${menu.getName()}</option>
                             </c:forEach>
                         </select></td>
                 </tr>
@@ -82,24 +86,25 @@
                                 <table>
                                     <tr>
                                         <td> Name: </td>
-                                        <td><input type="text" name="name" required="required"/> </td>
+                                        <td><input value="${food.name}" type="text" name="name" required="required"/> </td>
                                     </tr>
                                     <tr>
                                         <td> Description: </td>
-                                        <td> <input type="text" name="description" required="required" /> </td>
+                                        <td> <input value="${food.description}" type="text" name="description" required="required" /> </td>
                                     </tr>
                                     <tr>
                                         <td> Food Type: </td>
                                         <td> <select name="foodType">
                                             <c:forEach items="${foodTypes}" var="foodType">
-                                                <option value="${foodType.toString()}">${foodType}</option>
+                                                <option ${food.type==foodType ? 'selected="selected"' : ''}
+                                                        value="${foodType.toString()}">${foodType}</option>
                                             </c:forEach>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td> Description: </td>
-                                        <td> <input type="text" name="description" required="required" /> </td>
+                                        <td> Price: </td>
+                                        <td> <input value="${food.price}" type="text" name="price" required="required" /> </td>
                                     </tr>
                                 </table>
                             </div>

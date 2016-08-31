@@ -23,10 +23,10 @@
 </style>
 
 <section>
-    <div class="jumbotron" >
+    <div class="jumbotron">
         <div class="container">
             <ul>
-                <li><a href="/restaurant/list"><h3>Home</h3></a></li>
+                <li><a href="/user/dashboard"><h3>Home</h3></a></li>
                 <jsp:include page="/WEB-INF/views/tiles/common/logout.jsp"/>
                 <li class="active"><a   class="glyphicon glyphicon-shopping-cart" href="<c:url value='/cart'/>">ShoppingCart[${liveshoppingcart.totalItems}]</a></li>
                 <li><a href="/common/signup"><h3>Edit User</h3></a>

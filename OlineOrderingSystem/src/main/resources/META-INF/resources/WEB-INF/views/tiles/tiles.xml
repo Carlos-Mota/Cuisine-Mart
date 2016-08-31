@@ -66,20 +66,24 @@
 
 	<!-- admin views -->
     <definition name="adminDashboard" extends="base-definition">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/template/headerAdmin.jsp"/>
         <put-attribute name="title" value="Restaurant Detail"/>
         <put-attribute name="body" value="/WEB-INF/views/tiles/admin/dashboard.jsp"/>
     </definition>
 
 	<definition name="addRestaurant" extends="base-definition">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/headerAdmin.jsp"/>
 		<put-attribute name="title" value="Restaurant Detail"/>
 		<put-attribute name="body" value="/WEB-INF/views/tiles/admin/addRestaurant.jsp"/>
 	</definition>
 
 	<definition name="addMenu" extends="base-definition">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/headerAdmin.jsp"/>
 		<put-attribute name="title" value="Restaurant Detail"/>
 		<put-attribute name="body" value="/WEB-INF/views/tiles/admin/addMenu.jsp"/>
 	</definition>
 	<definition name="addFood" extends="base-definition">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/headerAdmin.jsp"/>
 		<put-attribute name="title" value="Restaurant Detail"/>
 		<put-attribute name="body" value="/WEB-INF/views/tiles/admin/addFood.jsp"/>
 	</definition>
