@@ -89,4 +89,12 @@ public class UserServiceImpl implements IUserService{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cuisine_mart.user.service.IServiceContract.IUserService#updateNewUser(com.cuisine_mart.user.domain.User)
+	 */
+	@Override
+	public User updateNewUser(User user) {
+		return userDAO.save(user);
+	}
+
 }

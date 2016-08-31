@@ -13,6 +13,7 @@ import com.cuisine_mart.user.domain.UserRole;
 @Service
 public interface IUserService {
 	public User saveNewUser(User user);
+	public User updateNewUser(User user);
 	public void signup(User user); 
 	boolean authenticateUser(User user);
 	List<User> getAllUsers();

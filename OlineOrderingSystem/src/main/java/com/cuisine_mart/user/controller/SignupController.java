@@ -71,7 +71,7 @@ public class SignupController {
         System.out.println(userInfoBean.getUserName());    
         userService.saveUserRole(userRole);
         savedUser.setUserRole(userRole);
-        userService.saveNewUser(savedUser);
+        userService.updateNewUser(savedUser);
         model.addAttribute("user", new User());
         return "redirect:/thankyou";
     }
