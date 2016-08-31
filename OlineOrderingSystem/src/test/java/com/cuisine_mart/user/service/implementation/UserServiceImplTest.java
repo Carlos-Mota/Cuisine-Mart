@@ -17,16 +17,16 @@ import com.cuisine_mart.user.service.IServiceContract.IUserService;
  * @author Sadiksha
  *
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Transactional
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@Transactional
 public class UserServiceImplTest {
-	@Autowired
-	IUserService userService;
-	
-	@Test
-	public void testSignUp(){
-		User user = new User();
-		
-	}
+//	@Autowired
+//	IUserService userService;
+//	
+//	@Test
+//	public void testSignUp(){
+//		User user = new User();
+//		
+//	}
 }
