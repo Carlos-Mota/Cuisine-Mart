@@ -42,14 +42,19 @@ public class PersonServiceImpl implements IPersonService {
 	 * @see com.cuisine_mart.user.service.IServiceContract.IPersonService#delete(int)
 	 */
 	@Override
-	public void delete(int personId) {
+	public void delete(Long personId) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Person findPersonById(int personId) {
+	public Person findPersonById(Long personId) {
 		 return personDAO.findPersonById(personId);
+	}
+
+	@Override
+	public Person findPersonByEmail(String email) {
+		return personDAO.findPersonByEmail(email);
 	}
 
 

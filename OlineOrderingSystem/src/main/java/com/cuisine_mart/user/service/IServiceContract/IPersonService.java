@@ -14,6 +14,7 @@ import com.cuisine_mart.user.domain.Person;
 public interface IPersonService {
 	public Person create(Person person);
 	public void update(Person person);
-	public void delete(int personId);
-	public Person findPersonById(int personId);
+	public void delete(Long personId);
+	public Person findPersonById(Long personId);
+	public Person findPersonByEmail(String email);
 }
