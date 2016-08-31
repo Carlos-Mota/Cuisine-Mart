@@ -13,10 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cuisine_mart.beans.UserInfoBean;
+import com.cuisine_mart.email.SmtpGmailSender;
 import com.cuisine_mart.user.domain.Address;
 import com.cuisine_mart.user.domain.Person;
 import com.cuisine_mart.user.domain.User;
@@ -38,11 +40,18 @@ public class SignupController {
     @Autowired
     private IUserService userService;
     
+    @Autowired
+	private SmtpGmailSender smtpGmailSender;
+    
     @RequestMapping(value="/signup",method = RequestMethod.GET)
     public String getSignupForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("userInfoBean", new UserInfoBean());
         return "signup";      
+    }
+    @RequestMapping(value="/thankyou", method=RequestMethod.GET)
+    public String thankyouPage(){
+    	return "thankyou";
     }
     
     @RequestMapping(value="/signup",method = RequestMethod.POST)
@@ -52,17 +61,14 @@ public class SignupController {
             return "signup";
         }
         Address address1 = new Address(userInfoBean.getStreet(),userInfoBean.getCity(),userInfoBean.getState(), userInfoBean.getZip(),userInfoBean.getPhoneNo());
-        Address address2 = new Address(userInfoBean.getStreet(),userInfoBean.getCity(),userInfoBean.getState(), userInfoBean.getZip(),userInfoBean.getPhoneNo());
         List<Address>addList = new ArrayList<>();
         addList.add(address1);
-        addList.add(address2);
         Person person = new Person(userInfoBean.getFirstName(), userInfoBean.getLastName(),userInfoBean.getEmail(),addList);
         Person p = personService.create(person);
-        User user = new User(userInfoBean.getUserName(),userInfoBean.getPassword(),userInfoBean.getEmail(),true);
-        User savedUser =  userService.saveNewUser(user);
+        User user = new User(userInfoBean.getUserName(),userInfoBean.getPassword(),userInfoBean.getEmail(),false);
+        User savedUser =  saveUser(user);
         UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getUserName()),"ROLE_USER");
-        System.out.println(userInfoBean.getUserName());        
-        
+        System.out.println(userInfoBean.getUserName());    
         userService.saveUserRole(userRole);
         savedUser.setUserRole(userRole);
         userService.saveNewUser(savedUser);
@@ -71,7 +77,18 @@ public class SignupController {
     }
     
     public User saveUser(User user){
-    	return userService.saveNewUser(user);
+    	System.out.println("test");
+    	return userService.saveNewUser(user);		
     	
     }
+    
+    
+    
+    @RequestMapping(value="/validateUser/{username}", method= RequestMethod.POST)
+	public String userValidation(@PathVariable String username, Model model){
+		User usr = userService.getUserByUsername(username);
+		usr.setEnabled(true);
+		userService.saveNewUser(usr);
+		return "redirect:/login";
+	}
 }

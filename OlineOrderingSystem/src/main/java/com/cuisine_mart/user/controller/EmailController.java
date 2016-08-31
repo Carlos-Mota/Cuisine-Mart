@@ -22,7 +22,7 @@ public class EmailController {
 
 	@RequestMapping("/send-mail")
 	public void sendMail() throws MessagingException {
-		smtpGmailSender.send("sadikshadhakal@gmail.com", "test message", "This is a test message usnig javamail");
+		smtpGmailSender.send("sadikshadhakal@gmail.com", "test message", "This is a test message using javamail");
 	}
 
 }

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @ComponentScan(basePackages="com.cuisine_mart.*")
 @PropertySource(value = "application.properties")
 @Import({ SpringSecurityConfig.class })
+@EnableAspectJAutoProxy
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Value("${spring.database.driverClassName}")
     private String driverClassName;
