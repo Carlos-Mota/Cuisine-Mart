@@ -22,7 +22,8 @@ body { padding-top:30px; }
     	var abc = document.getElementById("address");
     	var address1 = abc.options[abc.selectedIndex].text;
     	var splited = address1.split(",");
-    	alert(splited[0]);
+    	alert(abc.value);
+    	document.getElementById("Address").value =abc.value;
     	document.getElementById("street").value=splited[0];
     	document.getElementById("city").value=splited[1];
     	document.getElementById("state").value=splited[2];
@@ -58,15 +59,16 @@ body { padding-top:30px; }
                 <div class="container">
 				    <div class="row">
 				        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
-				                     <input type="hidden"
-                                        name="HiddenAddressId" id="Address"
-                                           value="0" /> 
+
 				            <legend> Order Address!</legend>
 				            <form:form action="/order/Address" modelAttribute="OrderAddress" method="post" class="form" role="form">
 				            <div class="row">
 				                <div class="col-xs-6 col-md-6">
 				                    <form:input class="form-control" path="street" name="street" placeholder="Street" type="text" id="street"
 				                        required="autofocus"/>
+				                        <input type="hidden"
+                                              name="HiddenAddressId" id="Address"
+                                              value="0" /> 
 				                </div>
 				                <div class="col-xs-6 col-md-6">
 				                    <form:input class="form-control" path="city" name="city" placeholder="City" type="text" id="city"  />

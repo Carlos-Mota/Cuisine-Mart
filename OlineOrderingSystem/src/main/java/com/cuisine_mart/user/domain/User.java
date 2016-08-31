@@ -113,7 +113,7 @@ public class User{
 		this.enabled = enabled;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToOne(mappedBy = "user")
 	public UserRole getUserRole() {
 		return this.userRole;
 	}

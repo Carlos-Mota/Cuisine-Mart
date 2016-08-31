@@ -21,28 +21,26 @@ public class OrderDetail {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="orderDetailId",nullable=false)
 	private Long id;
-	@ManyToOne
+/*	@ManyToOne
 	@JoinColumn(name="orderId")
-	private FoodOrder order;
+	private FoodOrder order;*/
 	@OneToOne
 	@JoinColumn(name="FoodId",referencedColumnName="FoodId")
 	private Food food;
 	private int qty;
-	@OneToOne
+/*	@OneToOne
 	@JoinColumn(name="addressId")
-	private Address address;
+	private Address address;*/
 	
 	public OrderDetail() {
 		super();
 	}
 	 
 	
-	public OrderDetail(FoodOrder order, Food food, int qty, Address address) {
+	public OrderDetail(Food food, int qty) {
 		super();
-		this.order = order;
 		this.food = food;
 		this.qty = qty;
-		this.address = address;
 	}
 
 
@@ -52,14 +50,6 @@ public class OrderDetail {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public FoodOrder getOrder() {
-		return order;
-	}
-
-	public void setOrder(FoodOrder order) {
-		this.order = order;
 	}
 
 

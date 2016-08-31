@@ -13,4 +13,5 @@ import com.cuisine_mart.user.domain.Address;
 public interface IAddressService {
 	void saveAddress(Address address);
 	List<Address> getAllAddress();
+	Address findAddressById(int addressId);
 }
