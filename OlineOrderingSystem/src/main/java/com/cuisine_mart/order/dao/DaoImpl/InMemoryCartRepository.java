@@ -11,10 +11,10 @@ import com.cuisine_mart.order.domain.Cart;
 @Repository
 public class InMemoryCartRepository implements ICartDao {
 	
-	private Map<String, Cart> carts;
+	private Map<String, Cart> carts= new HashMap<>();
 	
 	public InMemoryCartRepository() {
-		carts = new HashMap<>();
+
 	}
 	
 	@Override
@@ -37,6 +37,7 @@ public class InMemoryCartRepository implements ICartDao {
 			throw new IllegalArgumentException(String.format("Cannot update the cart.The cart with the given id(%) does not exist", cartId));
 		}
 		carts.remove(cartId);
+		carts.put(cartId, updatedCart);
 	}
 
 	@Override

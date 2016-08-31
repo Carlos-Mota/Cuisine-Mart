@@ -1,7 +1,6 @@
 package com.cuisine_mart.order.controller;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.cuisine_mart.order.domain.Food;
-import com.cuisine_mart.order.domain.FoodType;
 import com.cuisine_mart.order.service.IServiceContract.IFoodService;
 import com.cuisine_mart.restaurant.domain.Restaurant;
 import com.cuisine_mart.restaurant.service.IServiceContract.IRestaurantService;
@@ -36,5 +32,10 @@ public class homeController {
         modelMap.addAttribute("restaurants",restaurants);
 
 		return "userDashBoard";
+	}
+	
+	@RequestMapping(value="/payment", method= RequestMethod.GET)
+	public String paymentPage(Model model) {
+		return "paymentPage";
 	}
 }

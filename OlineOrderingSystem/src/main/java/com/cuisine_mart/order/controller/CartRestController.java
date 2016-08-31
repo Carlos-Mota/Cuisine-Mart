@@ -51,12 +51,14 @@ public class CartRestController {
         cartService.delete(cartId);
     }
     
-    @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/add/{foodId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addIItem(@PathVariable Long foodId, HttpServletRequest request) {
         String sessionId = request.getSession(true).getId();
+        System.out.println(sessionId);
         Cart cart = cartService.read(sessionId);
         if (cart == null) {
+        	System.out.println("Cart is new Created");
             cart = cartService.create(new Cart(sessionId));
         }
 
@@ -70,12 +72,11 @@ public class CartRestController {
         if (food == null) {
             throw new IllegalArgumentException(String.format("Food with id (%) not found", foodId));
         }
-
         cart.addCartItem(new CartItem(food));
         cartService.update(sessionId, cart);
     }
     
-    @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/remove/{foodId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void removeItem(@PathVariable Long foodId, HttpServletRequest request) {
         String sessionId = request.getSession(true).getId();

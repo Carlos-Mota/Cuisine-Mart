@@ -8,7 +8,7 @@
           href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="/webstore0.1/resources/js/controllers.js"></script>
+    <script src="<c:url value='/static/js/controllers.js'></c:url>"></script>
 
     <title>Cart</title>
   </head>
@@ -29,7 +29,7 @@
           <a class="btn btn-danger pull-left"
              ng-click="clearCart()"> <span
               class="glyphicon glyphicon-remove-sign"></span> Clear Cart
-          </a> <a href="#" class="btn btn-success pull-right"> <span
+          </a> <a href="<spring:url value="/payment" />" class="btn btn-success pull-right"> <span
               class="glyphicon-shopping-cart glyphicon"></span> Check out
           </a>
         </div>
@@ -45,7 +45,7 @@
             <td>{{item.food.name}}</td>
             <td>{{item.food.price}}</td>
             <td>{{item.quantity}}</td>
-            <td>{{item.totalPrice}}</td>
+            <td>{{item.totalPrice}}</td> 
             <td><a href="#" class="label label-danger" ng-click="removeFromCart(item.food.id)"> <span
                   class="glyphicon glyphicon-remove" /></span> Remove
               </a></td>
@@ -54,13 +54,13 @@
             <th></th>
             <th></th>
             <th>Grand Total</th>
-            <th>{{cart.grandTotal}}</th>
+             <th>{{cart.grandTotal}}</th> 
             <th></th>
           </tr>
         </table>
 
-        <a href="<spring:url value="/products" />" class="btn btn-default">
-          <span class="glyphicon-hand-left glyphicon"></span> Continue shopping
+        <a href="<spring:url value="restaurantList" />" class="btn btn-default">
+          <span class="glyphicon-hand-right glyphicon"></span> Continue shopping
         </a>
       </div>
     </section>

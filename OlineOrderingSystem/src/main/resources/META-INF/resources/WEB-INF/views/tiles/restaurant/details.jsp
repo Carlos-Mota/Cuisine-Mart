@@ -30,6 +30,10 @@
             border: solid;
         }
     </style>
+    <link rel="stylesheet"
+          href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+      <script src="<c:url value='/static/js/controllers.js'></c:url>"></script>
 </head>
 <body>
 
@@ -114,10 +118,7 @@
     	<a href="#" class="btn btn-warning btn-large" ng-click="addToCart('${food.id}')">
     		<span class="glyphicon-hand-right glyphicon"/>Add To Cart
     	</a>
-    	
-    	<a href="<spring:url value='/cart'/>" class="btn btn-default">
-    		<span class="glyphicon-hand-right glyphicon"></span>
-    	</a>
+
     </p> </td>
                                                 </tr>
                                             </c:forEach>
@@ -131,7 +132,6 @@
             </td>
         </tr>
     </table>
-
 </div>
 
 </section>

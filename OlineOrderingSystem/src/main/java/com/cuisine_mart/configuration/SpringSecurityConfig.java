@@ -28,13 +28,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
+        .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/user/dashboard").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER")
+                .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/restaurant/**").permitAll()
+                .antMatchers("/rest/cart/**").permitAll()
+                .antMatchers("/static/**").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/","/*").permitAll()
+                .antMatchers("/cart/**").permitAll()
+                .antMatchers("/rest/**").permitAll()
+                //.antMatchers("/payment/**").hasRole("USER")
+                .antMatchers("/","/**").permitAll()
 //                .antMatchers("/resources/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
