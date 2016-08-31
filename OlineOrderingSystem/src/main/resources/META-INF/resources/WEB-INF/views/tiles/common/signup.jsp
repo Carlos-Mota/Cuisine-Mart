@@ -63,10 +63,7 @@
 					<td><input type='text' name='lastName' value=''
 						required="required"></td>
 				</tr>
-				<tr>
-					<td>Email:</td>
-					<td><input type='text' name='email' required="required" /></td>
-				</tr>
+				
 				<tr>
 					<td>Phone No:</td>
 					<td><input type='text' name='phoneNo' required="required" /></td>
@@ -89,9 +86,8 @@
 					<td><input type='text' name='zip' required="required" /></td>
 				</tr>
 				<tr>
-					<td>User Name:</td>
-					<td><input type='text' name='userName' value=''
-						required="required"></td>
+					<td>Email:</td>
+					<td><input type='text' name='email' required="required" /></td>
 				</tr>
 
 
@@ -102,6 +98,9 @@
 				<tr>
 					<td>Confirm Password:</td>
 					<td><input type='password' id="matchPassword" name='matchPassword' required="required" /></td>
+				</tr>
+				<tr>
+					<span style="color:red">Your email would be used as username</span>
 				</tr>
 
 				<tr>

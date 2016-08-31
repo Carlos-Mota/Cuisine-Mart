@@ -10,8 +10,24 @@ body { padding-top:30px; }
 </style>
 
 <script type="text/javascript">
-    function clear(){
-    	document.getElementById("addOrderAddress").reset();
+    function newAddress(){
+    	var abc = document.getElementById("address").value=0;
+    	document.getElementById("street").value="";
+    	document.getElementById("city").value="";
+    	document.getElementById("state").value="";
+    	document.getElementById("zip").value="";
+    }
+    function setFields() {
+    	alert("Setting Field");
+    	var abc = document.getElementById("address");
+    	var address1 = abc.options[abc.selectedIndex].text;
+    	var splited = address1.split(",");
+    	alert(splited[0]);
+    	document.getElementById("street").value=splited[0];
+    	document.getElementById("city").value=splited[1];
+    	document.getElementById("state").value=splited[2];
+    	document.getElementById("zip").value=splited[3];
+    	alert(abc.options[abc.selectedIndex].text);
     }
 
 </script>
@@ -23,29 +39,30 @@ body { padding-top:30px; }
             <table>
                 <tr>
                     <td>Order Delivery Address:
-                        <select id="address" name="deliveryId">
+                        <select id="address" name="deliveryId" onchange="setFields()">
                             <option selected="selected">--Select--</option>
-<%--                             <c:forEach items="${Address}" var="address">
-                                <option value="${address.getAddressId()}">${address.getAddressId()}</option>
+                            <c:forEach items="${Address}" var="address">
+                                <option value="${address.getAddressId()}">${address.getStreet()},${address.getCity()},${address.getState()},${address.getZip()}</option>
                             </c:forEach>
-                        </select> --%>
+                        </select>
                     </td>
-                    <td><button type="button" class="btn btn-primary" onclick="clear()">New Address</button></td>
+                    <td><button type="button" class="btn btn-primary" onclick="newAddress()">New Address</button></td>
                 </tr>
             </table>
 
         </div>
-        <div id="addAddress" style="display: none;">
-<%--             <input type="hidden"
-                   name="${_csrf.parameterName}"
-                   value="${_csrf.token}" /> --%>
+        <div id="addAddress">
+
             <section class="container">
                 <h4>New Delivery Address</h4>
                 <div class="container">
 				    <div class="row">
 				        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
+				                     <input type="hidden"
+                                        name="HiddenAddressId" id="Address"
+                                           value="0" /> 
 				            <legend> Order Address!</legend>
-				            <form:form action="#" modelAttribute="OrderAddress" method="post" class="form" role="form">
+				            <form:form action="/order/Address" modelAttribute="OrderAddress" method="post" class="form" role="form">
 				            <div class="row">
 				                <div class="col-xs-6 col-md-6">
 				                    <form:input class="form-control" path="street" name="street" placeholder="Street" type="text" id="street"

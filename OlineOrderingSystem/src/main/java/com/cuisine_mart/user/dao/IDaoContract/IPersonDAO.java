@@ -16,5 +16,8 @@ import com.cuisine_mart.user.domain.Person;
 @Repository
 public interface IPersonDAO extends JpaRepository<Person, Long>{
 	@Query("SELECT distinct p FROM Person p Where p.personId=:id ")
-	public Person findPersonById(@Param ("id")int personId);
+	public Person findPersonById(@Param ("id")Long personId);
+	
+	@Query("SELECT distinct p FROM Person p WHERE p.email=:email")
+	public Person findPersonByEmail(@Param("email")String email);
 }

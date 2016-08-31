@@ -28,6 +28,11 @@
 		<put-attribute name="title" value="Sign-Up"/>
 		<put-attribute name="body" value="/WEB-INF/views/tiles/common/signup.jsp"/>
 	</definition>
+	<!-- User Edit Page -->
+	<definition name="useredit" extends="base-definition">
+		<put-attribute name="title" value="UserEdit"/>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/common/useredit.jsp"/>
+	</definition>
 	
 	<!-- Thank You Page -->
 	<definition name="thankyou" extends="base-definition">

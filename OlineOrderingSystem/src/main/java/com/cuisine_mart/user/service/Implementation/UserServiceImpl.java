@@ -46,9 +46,9 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public User findUserByUserId(int userId) {
+	public User findUserByUserId(Long userId) {
 		// TODO Auto-generated method stub
-		return userDAO.findOne((long) userId);
+		return userDAO.findOne((Long) userId);
 	}
 
 	@Override
