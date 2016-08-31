@@ -44,43 +44,15 @@ public class User{
 	private boolean enabled;
 	@Column(name="Email")
 	private String email;
-	@OneToOne
-	@JoinColumn(name="Person_Id")
-//	@OneToOne(mappedBy="user")	
-	private Person person;
+//	@OneToOne
+//	@JoinColumn(name="Person_Id")
+	@Column
+	private Long person;
 	private UserRole userRole;
 	
 	public User() {
 		super();
 	}
-//	}
-//	/**
-//	 * @return the userId
-//	 */
-//	public int getUserId() {
-//		return userId;
-//	}
-//
-//	/**
-//	 * @param userId the userId to set
-//	 */
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
-
-/*	*//**
-	 * @return the person
-	 *//*
-	public Person getPerson() {
-		return person;
-	}
-
-	*//**
-	 * @param person the person to set
-	 *//*
-	public void setPerson(Person person) {
-		this.person = person;
-	}*/
 
 	/**
 	 * @return the email
@@ -101,7 +73,6 @@ public class User{
 		this.password = password;
 		this.enabled = enabled;
 		this.email = email;
-//		this.userRole = userRole;
 	}
 
 	
@@ -118,6 +89,14 @@ public class User{
 	@Column(name = "password", nullable = false, length = 60)
 	public String getPassword() {
 		return this.password;
+	}
+	
+	public Long getPerson() {
+		return person;
+	}
+
+	public void setPerson(Long person) {
+		this.person = person;
 	}
 
 	public void setPassword(String password) {
