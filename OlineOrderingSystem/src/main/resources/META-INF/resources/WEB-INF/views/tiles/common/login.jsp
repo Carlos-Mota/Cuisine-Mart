@@ -46,7 +46,7 @@
     <form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
         <table>
             <tr>
-                <td>User:</td>
+                <td>User/Email:</td>
                 <td><input type='text' name='username' value='' required="required"></td>
             </tr>
             <tr>

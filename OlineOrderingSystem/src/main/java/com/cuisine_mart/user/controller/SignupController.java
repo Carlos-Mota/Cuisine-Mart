@@ -65,10 +65,11 @@ public class SignupController {
         addList.add(address1);
         Person person = new Person(userInfoBean.getFirstName(), userInfoBean.getLastName(),userInfoBean.getEmail(),addList);
         Person p = personService.create(person);
-        User user = new User(userInfoBean.getUserName(),userInfoBean.getPassword(),userInfoBean.getEmail(),false,p.getPersonId());
+        User user = new User(userInfoBean.getEmail(),userInfoBean.getPassword(),userInfoBean.getEmail(),false,p.getPersonId());
+//        user.setUsername(userInfoBean.getEmail());
         User savedUser =  userService.saveNewUser(user);	
-        UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getUserName()),"ROLE_USER");
-        System.out.println(userInfoBean.getUserName());    
+        UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getEmail()),"ROLE_USER");
+        //System.out.println(userInfoBean.getUserName());    
         userService.saveUserRole(userRole);
         savedUser.setUserRole(userRole);
         userService.updateNewUser(savedUser);
@@ -76,11 +77,39 @@ public class SignupController {
         return "redirect:/thankyou";
     }
         
-    @RequestMapping(value="/validateUser/{username}", method= RequestMethod.GET)
-	public String userValidation(@PathVariable String username, Model model){
+    @RequestMapping(value="/validateUser/{username:.+}", method= RequestMethod.GET)
+	public String userValidation(@PathVariable("username") String username, Model model){
+    	System.out.println(username);
 		User usr = userService.getUserByUsername(username);
+		System.out.println(usr.getUsername());
 		usr.setEnabled(true);
 		userService.saveNewUser(usr);
 		return "redirect:/login";
 	}
+    
+    @RequestMapping(value="/useredit", method= RequestMethod.GET)
+    public String editUserForm(User user, Model model) {
+        //model.addAttribute("user",userService.getUserByUsername(username));
+        
+        //model.addAttribute("userInfoBean", new UserInfoBean());
+        return "signup";      
+    }
+    
+    @RequestMapping(value="/useredit/{id}", method= RequestMethod.POST)
+    public String saveUpdatedUser(@ModelAttribute("userInfoBean") @Valid UserInfoBean userInfoBean,
+            Model model,BindingResult result, @PathVariable("id")String id){
+    	
+    	User user = userService.findUserByUserId(Long.parseLong(id));
+    	userInfoBean.getFirstName();
+    	userInfoBean.getLastName();
+    	userInfoBean.getPhoneNo();
+    	userInfoBean.getStreet();
+    	userInfoBean.getCity();
+    	userInfoBean.getZip();
+    	userInfoBean.getEmail();
+    	userInfoBean.getPassword();
+    	userService.updateNewUser(user);
+        model.addAttribute("user", new User());
+    	return "redirect:/home";
+    }
 }

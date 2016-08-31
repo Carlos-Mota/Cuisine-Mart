@@ -17,7 +17,7 @@ public interface IUserService {
 	public void signup(User user); 
 	boolean authenticateUser(User user);
 	List<User> getAllUsers();
-	User findUserByUserId(int userId);
+	User findUserByUserId(Long userId);
 	void deleteUser(int userId);
 	List<User> searchUserByKeyword(String keyword);
 	public User getUserByUsername(String username);
