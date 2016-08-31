@@ -23,9 +23,9 @@ public class OrderController {
 	
 	@RequestMapping(value="/address",method= RequestMethod.GET)
 	public String orderAddressPage(Model model) {
-/*		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<Address> address = user.getPerson().getAddress();
-		model.addAttribute("Address", address);*/
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		//List<Address> address = user.getPerson().getAddress();
+		//model.addAttribute("Address", address);
 		model.addAttribute("OrderAddress",new Address());
 		return "orderAddress";
 	}
