@@ -83,5 +83,11 @@
 		<put-attribute name="title" value="Restaurant Detail"/>
 		<put-attribute name="body" value="/WEB-INF/views/tiles/admin/addFood.jsp"/>
 	</definition>
+	
+	<!--  Order Address -->
+	<definition name="orderAddress" extends="base-definition">
+		<put-attribute name="title" value="Delivery Address"/>
+		<put-attribute name="body" value="/WEB-INF/views/tiles/restaurent/OrderAddress.jsp"/>
+	</definition>
 
 </tiles-definitions>
