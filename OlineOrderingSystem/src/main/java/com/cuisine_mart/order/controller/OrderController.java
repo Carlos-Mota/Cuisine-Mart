@@ -1,26 +1,5 @@
 package com.cuisine_mart.order.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import javax.websocket.server.PathParam;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.security.core.userdetails.User;
-
 import com.cuisine_mart.order.domain.Cart;
 import com.cuisine_mart.order.domain.CartItem;
 import com.cuisine_mart.order.domain.FoodOrder;
@@ -33,6 +12,21 @@ import com.cuisine_mart.user.domain.Person;
 import com.cuisine_mart.user.service.IServiceContract.IAddressService;
 import com.cuisine_mart.user.service.IServiceContract.IPersonService;
 import com.cuisine_mart.user.service.IServiceContract.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value="/order")
@@ -60,9 +54,9 @@ public class OrderController {
 //		model.addAttribute("Address", person.getAddress());
 //		model.addAttribute("OrderAddress",new Address());
 		Person person = (Person) request.getSession().getAttribute("person");
-		if(person!=null) {
+//		if(person!=null) {
 			model.addAttribute("Address", person.getAddress());
-		}
+//		}
 		
 		model.addAttribute("OrderAddress",new Address());
 		return "orderAddress";

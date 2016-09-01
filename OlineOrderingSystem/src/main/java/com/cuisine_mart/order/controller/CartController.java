@@ -1,12 +1,12 @@
 package com.cuisine_mart.order.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value="/cart")
@@ -23,6 +23,6 @@ public class CartController {
 	}
 	@RequestMapping(value="/restaurantList",method=RequestMethod.GET)
 	public String continueShopping() {
-		return "userDashBoard";
+		return "redirect:/user/dashboard";
 	}
 }

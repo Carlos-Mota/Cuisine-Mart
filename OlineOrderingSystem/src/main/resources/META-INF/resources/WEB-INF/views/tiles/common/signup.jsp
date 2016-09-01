@@ -66,7 +66,7 @@
 				
 				<tr>
 					<td>Phone No:</td>
-					<td><input type='text' name='phoneNo' required="required" /></td>
+					<td><input type='number' name='phoneNo' required="required" /></td>
 				</tr>
 				<tr>
 					<td>Street:</td>
@@ -83,7 +83,7 @@
 
 				<tr>
 					<td>Zip:</td>
-					<td><input type='text' name='zip' required="required" /></td>
+					<td><input type='number' name='zip' required="required" /></td>
 				</tr>
 				<tr>
 					<td>Email:</td>

@@ -22,11 +22,11 @@ body { padding-top:30px; }
     	document.getElementById("zip").disabled = false;
     }
     function setFields() {
-    	alert("Setting Field");
+//    	alert("Setting Field");
     	var abc = document.getElementById("address");
     	var address1 = abc.options[abc.selectedIndex].text;
     	var splited = address1.split(",");
-    	alert(abc.value);
+//    	alert(abc.value);
     	document.getElementById("Address").value =abc.value;
     	document.getElementById("street").value=splited[0];
     	document.getElementById("city").value=splited[1];
@@ -36,7 +36,7 @@ body { padding-top:30px; }
     	document.getElementById("city").disabled = true;
     	document.getElementById("state").disabled = true; 
     	document.getElementById("zip").disabled = true;
-    	alert(abc.options[abc.selectedIndex].text);
+//    	alert(abc.options[abc.selectedIndex].text);
     }
 
 </script>
