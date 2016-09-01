@@ -4,6 +4,7 @@
 package com.cuisine_mart.aop;
 
 import com.cuisine_mart.email.SmtpGmailSender;
+import com.cuisine_mart.order.domain.FoodOrder;
 import com.cuisine_mart.restaurant.domain.Restaurant;
 import com.cuisine_mart.user.domain.User;
 import org.aspectj.lang.JoinPoint;
@@ -47,6 +48,21 @@ public class EmailAdvice {
 
     public void printMessage(String message){
         System.out.println(message);
+    }
+    
+    //@After("execution(* com.cuisine_mart.restaurant.service.implementation.RestaurantServiceImpl.save(..)) && args(restaurant)")
+    @After("execution(* com.cuisine_mart.order.service.Implementation.OrderServiceImpl.create(..)) && args(order)")
+    public void sendEmailAfterOrderingFood(FoodOrder order) throws MessagingException {
+    	printMessage("order.getUser().getEmail() =" + order.getUser().getEmail());
+    	printMessage("Order Successfully placed ");
+    	String emailBody = "Your order is successfully Placed!!! It will be delivered after 20 min";
+    	boolean status = smtpGmailSender.send(order.getUser().getEmail(), "Your Order in the Way!!!", emailBody);
+    	if(status) {
+    		printMessage("Order successfully sent to user at " +order.getUser().getEmail());
+    	}
+    	else {
+    		printMessage("Failed to send order email to user");
+    	}
     }
 
 }
