@@ -24,6 +24,7 @@ import com.cuisine_mart.order.domain.Cart;
 import com.cuisine_mart.order.domain.CartItem;
 import com.cuisine_mart.order.domain.FoodOrder;
 import com.cuisine_mart.order.domain.OrderDetail;
+import com.cuisine_mart.order.exception.UserNotFound;
 import com.cuisine_mart.order.service.IServiceContract.ICartService;
 import com.cuisine_mart.order.service.IServiceContract.IOrderService;
 import com.cuisine_mart.user.domain.Address;
@@ -69,7 +70,19 @@ public class OrderController {
 			addressService.saveAddress(address);
 			Person person = (Person) request.getSession().getAttribute("person");
 			com.cuisine_mart.user.domain.User user = userService.getUserByUsername(person.getEmail());
-			FoodOrder order = new FoodOrder(new Date(),null,user,address);
+			
+			Cart cart  = cartService.read(request.getSession().getId());
+			List<OrderDetail> orderItems = new ArrayList<>();
+			Map<Long, CartItem> cartItem = cart.getCartItems();
+			if(cartItem != null) {
+				for(Map.Entry<Long, CartItem>entry:cartItem.entrySet()) {
+					CartItem item = entry.getValue();
+					orderItems.add(new OrderDetail(item.getFood(), item.getQuantity()));
+				}
+			}
+			
+			FoodOrder order = new FoodOrder(new Date(),orderItems,user,address);
+			orderService.create(order);
 		}
 		else {
 			Person person = (Person) request.getSession().getAttribute("person");
@@ -88,7 +101,41 @@ public class OrderController {
 			FoodOrder order = new FoodOrder(new Date(),orderItems,user,address1);
 			orderService.create(order);
 		}
-		return"redirect:/ThankyouShopping";
+		return"redirect:/order/ThankYouShopping";
+	}
+	
+	@RequestMapping(value="/ThankYouShopping",method=RequestMethod.GET)
+	public String thankYouPage() {
+		return "ThankYouShopping";
+	}
+	
+	@RequestMapping(value="/userorder",method=RequestMethod.GET)
+	public String getUserOrder(HttpServletRequest request,Model model) {
+		Person person = (Person) request.getSession().getAttribute("person");
+		if(person == null) {
+			return "login";
+		}
+		try {
+			List<FoodOrder> orders = orderService.findOrderByUser(person.getEmail());
+/*			for(FoodOrder order : orders) {
+				System.out.println(order.getOrderDate().toString());
+				List<OrderDetail> orderDetails = order.getOrderDetail();
+				for(OrderDetail orderDetail : orderDetails) {
+					System.out.println(orderDetail.getFood().getName());
+				}
+			}
+			System.out.println(orders.size());*/
+			model.addAttribute("orders", orders);
+		} catch (UserNotFound e) {
+			e.printStackTrace();
+		}
+		return "UserOrders";
+		
+	}
+	
+	@RequestMapping(value="/restaurantList",method=RequestMethod.GET)
+	public String continueShopping() {
+		return "userDashBoard";
 	}
 
 }

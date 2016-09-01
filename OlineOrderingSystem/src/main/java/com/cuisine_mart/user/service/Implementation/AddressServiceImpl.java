@@ -19,7 +19,7 @@ public class AddressServiceImpl implements IAddressService{
 
 	@Override
 	public void saveAddress(Address address) {
-		// TODO Auto-generated method stub
+		addressDao.save(address);
 		
 	}
 

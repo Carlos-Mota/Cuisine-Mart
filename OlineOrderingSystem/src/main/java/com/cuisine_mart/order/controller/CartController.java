@@ -21,4 +21,8 @@ public class CartController {
 		model.addAttribute("cartId", cartId);
 		return "orderCart";
 	}
+	@RequestMapping(value="/restaurantList",method=RequestMethod.GET)
+	public String continueShopping() {
+		return "userDashBoard";
+	}
 }

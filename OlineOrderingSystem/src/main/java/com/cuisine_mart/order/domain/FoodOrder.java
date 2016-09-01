@@ -32,7 +32,7 @@ public class FoodOrder {
 	private Long id;
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetail = new ArrayList<>();
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn

@@ -47,6 +47,12 @@ ul li a {
 				<a:if test="${pageContext.request.userPrincipal.name == null}">
 					<li class="hidden"></li>
 				</a:if>
+				<a:if test="${pageContext.request.userPrincipal.name != null }">
+					<li><a href="<a:url value="/order/userorder"/>"><h3>My Orders</h3></a></li>
+				</a:if>
+			    <a:if test="${pageContext.request.userPrincipal.name == null}">
+					<li class="hidden"></li>
+				</a:if>
 				
 			</ul>
 			<%--<h1 style="text-align: center;"> Header Section </h1>--%>

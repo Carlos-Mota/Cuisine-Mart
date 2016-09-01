@@ -19,5 +19,4 @@ public interface IOrderDao extends JpaRepository<FoodOrder, Long> {
 	public FoodOrder findOrderById(@Param("orderId") Long orderId);
 	@Query("SELECT o FROM FoodOrder o WHERE o.user.username=:username")
 	public List<FoodOrder> findUserOrder(@Param("username")String userId );
-
 }
