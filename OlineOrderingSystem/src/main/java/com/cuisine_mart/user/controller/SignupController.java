@@ -3,11 +3,15 @@
  */
 package com.cuisine_mart.user.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-
+import com.cuisine_mart.beans.UserInfoBean;
+import com.cuisine_mart.email.SmtpGmailSender;
+import com.cuisine_mart.user.domain.Address;
+import com.cuisine_mart.user.domain.Person;
+import com.cuisine_mart.user.domain.User;
+import com.cuisine_mart.user.domain.UserRole;
+import com.cuisine_mart.user.service.IServiceContract.IAddressService;
+import com.cuisine_mart.user.service.IServiceContract.IPersonService;
+import com.cuisine_mart.user.service.IServiceContract.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,15 +22,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cuisine_mart.beans.UserInfoBean;
-import com.cuisine_mart.email.SmtpGmailSender;
-import com.cuisine_mart.user.domain.Address;
-import com.cuisine_mart.user.domain.Person;
-import com.cuisine_mart.user.domain.User;
-import com.cuisine_mart.user.domain.UserRole;
-import com.cuisine_mart.user.service.IServiceContract.IAddressService;
-import com.cuisine_mart.user.service.IServiceContract.IPersonService;
-import com.cuisine_mart.user.service.IServiceContract.IUserService;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author Sadiksha
@@ -68,6 +67,7 @@ public class SignupController {
         Person p = personService.create(person);
         User user = new User(userInfoBean.getEmail(),userInfoBean.getPassword(),userInfoBean.getEmail(),false,p.getPersonId());
 //        user.setUsername(userInfoBean.getEmail());
+        user.setCreatedDate(new Date());
         User savedUser =  userService.saveNewUser(user);	
         UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getEmail()),"ROLE_USER");
         //System.out.println(userInfoBean.getUserName());    

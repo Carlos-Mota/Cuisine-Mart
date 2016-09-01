@@ -1,16 +1,13 @@
 package com.cuisine_mart.user.service.Implementation;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
+import com.cuisine_mart.user.dao.IDaoContract.IPersonDAO;
+import com.cuisine_mart.user.domain.Person;
+import com.cuisine_mart.user.service.IServiceContract.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cuisine_mart.user.dao.IDaoContract.IPersonDAO;
-import com.cuisine_mart.user.domain.Address;
-import com.cuisine_mart.user.domain.Person;
-import com.cuisine_mart.user.service.IServiceContract.IPersonService;
+import javax.transaction.Transactional;
+import java.util.List;
 /**
  * @author Sadiksha
  *
@@ -58,7 +55,10 @@ public class PersonServiceImpl implements IPersonService {
 		return personDAO.findPersonByEmail(email);
 	}
 
-
+	@Override
+	public List<Person> getReportForPersonByLocations() {
+		return personDAO.generateReportForRegisteredPersonsByLocation();
+	}
 
 
 }

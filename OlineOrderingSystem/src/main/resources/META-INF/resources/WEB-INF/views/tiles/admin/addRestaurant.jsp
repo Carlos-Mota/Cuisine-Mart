@@ -64,10 +64,10 @@
                                     </c:forEach></select>
                                 </td>
                             </tr>
-                            <tr>
-                                <td> Image: </td>
-                                <td> <input value="${restaurantInfoBean.imageToUpload}" type="file" name="imageToUpload" /> </td>
-                            </tr>
+                            <%--<tr>--%>
+                                <%--<td> Image: </td>--%>
+                                <%--<td> <input value="${restaurantInfoBean.imageToUpload}" type="file" name="imageToUpload" /> </td>--%>
+                            <%--</tr>--%>
                         </table>
                     </div>
                 </td>

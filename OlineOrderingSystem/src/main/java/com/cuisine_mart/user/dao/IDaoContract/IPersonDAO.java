@@ -2,6 +2,7 @@ package com.cuisine_mart.user.dao.IDaoContract;
 
 import java.util.List;
 
+import com.cuisine_mart.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,4 +21,7 @@ public interface IPersonDAO extends JpaRepository<Person, Long>{
 	
 	@Query("SELECT distinct p FROM Person p WHERE p.email=:email")
 	public Person findPersonByEmail(@Param("email")String email);
+
+	@Query("select a.city, count(p) from Person p join p.address a group by a.city")
+	public List<Person> generateReportForRegisteredPersonsByLocation();
 }

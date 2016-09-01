@@ -3,22 +3,14 @@
  */
 package com.cuisine_mart.email;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import javax.mail.MessagingException;
-
-import org.joda.time.DateTime;
+import com.cuisine_mart.user.service.IServiceContract.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.cuisine_mart.email.SmtpGmailSender;
-import com.cuisine_mart.user.domain.User;
-import com.cuisine_mart.user.service.IServiceContract.IUserService;
+import javax.mail.MessagingException;
+import java.text.SimpleDateFormat;
 
 
 
