@@ -32,7 +32,7 @@
     }
 </style>
 
-<form:form name="addRestaurantForm" modelAttribute="restaurantInfoBean"  action="/admin/saveRestaurant" method="post">
+<form:form name="addRestaurantForm" modelAttribute="restaurantInfoBean"  action="/admin/saveRestaurant" method="post" enctype="multipart/form-data">
     <input type="hidden"
            name="${_csrf.parameterName}"
            value="${_csrf.token}" />
@@ -63,6 +63,10 @@
                                                 value="${cuisine.getId()}">${cuisine.getName()}</option>
                                     </c:forEach></select>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td> Image: </td>
+                                <td> <input value="${restaurantInfoBean.imageToUpload}" type="file" name="imageToUpload" /> </td>
                             </tr>
                         </table>
                     </div>

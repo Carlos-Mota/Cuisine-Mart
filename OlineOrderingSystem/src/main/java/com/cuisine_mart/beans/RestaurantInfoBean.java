@@ -1,6 +1,7 @@
 package com.cuisine_mart.beans;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by Rajiv on 8/30/2016.
@@ -39,6 +40,7 @@ public class RestaurantInfoBean {
     private String state;
     private String phoneNumber;
     private Long cuisineId;
+    private MultipartFile imageToUpload;
 
     private String image;
 
@@ -129,4 +131,15 @@ public class RestaurantInfoBean {
     public void setName(String name) {
         this.name = name;
     }
+
+	public MultipartFile getImageToUpload() {
+		return imageToUpload;
+	}
+
+	public void setImageToUpload(MultipartFile imageToUpload) {
+		this.imageToUpload = imageToUpload;
+	}
+    
+    
+    
 }

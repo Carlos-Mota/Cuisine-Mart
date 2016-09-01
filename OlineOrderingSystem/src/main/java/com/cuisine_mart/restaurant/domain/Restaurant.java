@@ -2,6 +2,7 @@ package com.cuisine_mart.restaurant.domain;
 
 import com.cuisine_mart.user.domain.Address;
 import org.hibernate.validator.constraints.Email;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -57,8 +58,21 @@ public class Restaurant {
 
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
+    
+    @Transient
+    private MultipartFile restaurentImage;
+    
+    
 
-    public Date getDateCreated() {
+    public MultipartFile getRestaurentImage() {
+		return restaurentImage;
+	}
+
+	public void setRestaurentImage(MultipartFile restaurentImage) {
+		this.restaurentImage = restaurentImage;
+	}
+
+	public Date getDateCreated() {
         return dateCreated;
     }
 
