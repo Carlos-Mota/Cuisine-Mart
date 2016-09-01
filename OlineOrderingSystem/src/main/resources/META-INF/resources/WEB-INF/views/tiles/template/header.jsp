@@ -40,7 +40,7 @@ ul li a {
 				<li><a href="/user/dashboard"><h3>Home</h3></a></li>
 				<jsp:include page="/WEB-INF/views/tiles/common/logout.jsp" />
 				<li class="active"><a class="glyphicon glyphicon-shopping-cart"
-					href="<c:url value='/cart'/>">ShoppingCart[${liveshoppingcart.totalItems}]</a></li>
+					href="<a:url value='/cart'/>">ShoppingCart[]</a></li>
 				<a:if test="${pageContext.request.userPrincipal.name != null}">
 					<li><a href="/useredit"><h3>Edit User</h3></a></li>
 				</a:if>

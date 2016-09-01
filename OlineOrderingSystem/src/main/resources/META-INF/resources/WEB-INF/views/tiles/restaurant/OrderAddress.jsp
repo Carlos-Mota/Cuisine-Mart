@@ -16,6 +16,10 @@ body { padding-top:30px; }
     	document.getElementById("city").value="";
     	document.getElementById("state").value="";
     	document.getElementById("zip").value="";
+    	document.getElementById("street").disabled = false;
+    	document.getElementById("city").disabled = false;
+    	document.getElementById("state").disabled = false; 
+    	document.getElementById("zip").disabled = false;
     }
     function setFields() {
     	alert("Setting Field");
@@ -28,6 +32,10 @@ body { padding-top:30px; }
     	document.getElementById("city").value=splited[1];
     	document.getElementById("state").value=splited[2];
     	document.getElementById("zip").value=splited[3];
+    	document.getElementById("street").disabled = true;
+    	document.getElementById("city").disabled = true;
+    	document.getElementById("state").disabled = true; 
+    	document.getElementById("zip").disabled = true;
     	alert(abc.options[abc.selectedIndex].text);
     }
 
