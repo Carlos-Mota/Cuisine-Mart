@@ -29,6 +29,11 @@
                 <li><a href="/admin/dashboard"><h3>Home</h3></a></li>
                 <jsp:include page="/WEB-INF/views/tiles/common/logout.jsp"/>
             </ul>
+            <ul>
+                <li>
+                    <form action="/admin/search" method="post"><input type="text" name="searchBox" placeholder="Search.." value="${searchBoxText}"/></form>
+                </li>
+            </ul>
             <%--<h1 style="text-align: center;"> Header Section </h1>--%>
         </div>
     </div>

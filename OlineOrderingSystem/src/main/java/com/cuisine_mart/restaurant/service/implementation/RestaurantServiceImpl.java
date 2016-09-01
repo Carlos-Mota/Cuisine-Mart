@@ -48,6 +48,11 @@ public class RestaurantServiceImpl implements IRestaurantService {
     }
 
     @Override
+    public List<Restaurant> findAllByNameOrDescriptionLike(String inputText) {
+        return restaurantDao.findAllByDescriptionOrNameLike(inputText);
+    }
+
+    @Override
     @Transactional
     public List<Restaurant> findAll() {
         return restaurantDao.findAll();

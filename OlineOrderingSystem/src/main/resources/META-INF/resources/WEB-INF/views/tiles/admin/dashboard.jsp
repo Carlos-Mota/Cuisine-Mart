@@ -1,13 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+    <script type="text/javascript" src="/static/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-3.1.0.min.js"></script>
     <link rel="stylesheet"
           href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <%--<link href="/restaurant/restaurantList.css" rel="stylesheet" type="text/css"/>--%>
     <style>
         .box-table
         {
-            background-color: #d5d5d5;
+            background-color: #f2f2f2;
             border:1px solid #d5d5d5;
             padding:10px;
             color:#6e6f72;
@@ -17,7 +19,7 @@
         }
         .menuHolder
         {
-            background-color: #f4f4f4;
+            /*background-color: #f4f4f4;*/
             border:1px solid #bdbdbd;
             padding:10px;
             color: #dde0e5;
@@ -39,11 +41,42 @@
         #mainHolder{
             display: table-row;
         }
+        table, td, th {
+            /*border: 1px solid #ddd;*/
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 70%;
+        }
+
+        th, td {
+            padding:10px;
+        }
     </style>
     <script>
         function confirmDelete(){
             return confirm("Are you sure to delete?");
         }
+
+        $(document).ready(function(){
+            $(".hover-desc").hover(function(){
+                $.ajax({
+                    url: "/rest/getDescription",
+                    type:"POST",
+                    data:{},
+                    success:function(){
+                        $("#restaurantDescription").style("display","block");
+                    },
+                    error: function(){
+
+                    }
+                })
+                console.log(this.name);
+            })
+        })
+
     </script>
 </head>
 <body>
@@ -68,8 +101,13 @@
                                             <div>
                                                 <table>
                                                     <tr>
-                                                        <td><a href="/admin/editRestaurant/${restaurant.id}">${restaurant.name}</a></td>
-                                                        <td><a onclick="return confirmDelete();" href="/admin/deleteRestaurant/${restaurant.id}">Delete</a></td>
+                                                        <td><a id="${restaurant.id}" name="restaurant" class="hover-desc"
+                                                               href="/admin/editRestaurant/${restaurant.id}">${restaurant.name}</a>
+                                                        </td>
+                                                        <td><a onclick="return confirmDelete();"
+                                                               href="/admin/deleteRestaurant/${restaurant.id}">
+                                                            <input type="button" value="Delete"/></a>
+                                                        </td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -102,8 +140,9 @@
                                             <div>
                                                 <table>
                                                     <tr>
-                                                        <td><a href="/admin/editMenu/${menu.getId()}">${menu.name}</a></td>
-                                                        <td><a onclick="return confirmDelete();" href="/admin/deleteMenu/${menu.getId()}">Delete</a></td>
+                                                        <td><a id="${menu.getId()}" name="menu" class="hover-desc" href="/admin/editMenu/${menu.getId()}">${menu.name}</a></td>
+                                                        <td><a onclick="return confirmDelete();" href="/admin/deleteMenu/${menu.getId()}">
+                                                            <input type="button" value="Delete"/></a></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -136,8 +175,9 @@
                                             <div>
                                                 <table>
                                                     <tr>
-                                                        <td><a href="/admin/editFood/${food.id}">${food.name}</a></td>
-                                                        <td><a onclick="return confirmDelete();" href="/admin/deleteFood/${food.id}">Delete</a></td>
+                                                        <td><a id="${food.id}" name="food" class="hover-desc" href="/admin/editFood/${food.id}">${food.name}</a></td>
+                                                        <td><a onclick="return confirmDelete();" href="/admin/deleteFood/${food.id}">
+                                                            <input type="button" value="Delete"/></a></td>
                                                     </tr>
                                                 </table>
                                             </div>

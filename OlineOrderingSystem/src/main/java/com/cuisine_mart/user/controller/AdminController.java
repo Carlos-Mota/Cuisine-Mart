@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -177,4 +178,28 @@ public class AdminController {
         foodService.delete(id);
         return "redirect:/admin/dashboard";
     }
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public String searchRestaurants(@RequestParam String searchBox,ModelMap modelMap){
+        List<Restaurant> restaurants = iRestaurantService.findAllByNameOrDescriptionLike(searchBox);
+        List<Menu> menus = new ArrayList<>();
+        List<Food> foods = new ArrayList<>();
+        for(Restaurant restaurant:restaurants){
+            menus.addAll(menuService.findAllByRestaurant(restaurant));
+        }
+        for(Menu menu : menus){
+            foods.addAll(menu.getFood());
+        }
+        modelMap.addAttribute("menus",menus);
+        modelMap.addAttribute("foods",foods);
+        modelMap.addAttribute("restaurants",restaurants);
+        modelMap.addAttribute("searchBoxText",searchBox);
+        return "adminDashboard";
+    }
+
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.GET)
+    public String uploadImage(ModelMap model) {
+        return "/users/user/fileupload";
+    }
+
 }
