@@ -13,7 +13,7 @@ import com.cuisine_mart.user.domain.Person;
 @Service
 public interface IPersonService {
 	public Person create(Person person);
-	public void update(Person person);
+	public Person update(Person person);
 	public void delete(Long personId);
 	public Person findPersonById(Long personId);
 	public Person findPersonByEmail(String email);

@@ -108,20 +108,43 @@ public class SignupController {
     @RequestMapping(value="/useredit")
     public String saveEditedUser(@ModelAttribute("userInfoBean") @Valid UserInfoBean userInfoBean,
             Model model,BindingResult result){
-//    	 Address address1 = new Address(userInfoBean.getStreet(),userInfoBean.getCity(),userInfoBean.getState(), userInfoBean.getZip(),userInfoBean.getPhoneNo());
-//         List<Address>addList = new ArrayList<>();
-//         addList.add(address1);
-//         Person person = new Person(userInfoBean.getFirstName(), userInfoBean.getLastName(),userInfoBean.getEmail(),addList);
-//         Person p = personService.create(person);
-//         User user = new User(userInfoBean.getEmail(),userInfoBean.getPassword(),userInfoBean.getEmail(),false,p.getPersonId());
-////         user.setUsername(userInfoBean.getEmail());
-//         User savedUser =  userService.updateNewUser(user);	
-//         UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getEmail()),"ROLE_USER");
-//         //System.out.println(userInfoBean.getUserName());    
+    	User user = userService.getUserByUsername(userInfoBean.getEmail());
+    	Person person = personService.findPersonById(user.getPerson());
+    	Address address = person.getAddress().get(0);
+    	user = setUserValues(user,userInfoBean);
+    	person = setPersonValues(person,userInfoBean);
+    	address = setAddressValues(address,userInfoBean);
+        User savedUser =  userService.updateNewUser(user);	
+//        UserRole userRole = new UserRole(userService.getUserByUsername(userInfoBean.getEmail()),"ROLE_USER");
+         //System.out.println(userInfoBean.getUserName());    
 //         userService.saveUserRole(userRole);
 //         savedUser.setUserRole(userRole);
-//         userService.updateNewUser(savedUser);
-//         model.addAttribute("user", new User());
+         userService.updateNewUser(savedUser);
+         personService.update(person);
+         model.addAttribute("user", new User());
          return "redirect:/user/dashboard";
+    }
+    
+    public User setUserValues(User user,UserInfoBean userInfoBean){
+    	user.setEmail(userInfoBean.getEmail());
+    	user.setUsername(userInfoBean.getEmail());
+    	user.setPassword(userInfoBean.getPassword());
+    	return user;
+    }
+    
+    public Person setPersonValues(Person person, UserInfoBean userInfoBean){
+    	person.setFristName(userInfoBean.getFirstName());
+    	person.setLastName(userInfoBean.getLastName());
+    	person.setEmail(userInfoBean.getEmail());
+    	return person;
+    }
+    
+    public Address setAddressValues(Address address , UserInfoBean userInfoBean){
+    	address.setCity(userInfoBean.getCity());
+    	address.setPhoneNo(userInfoBean.getPhoneNo());
+    	address.setState(userInfoBean.getState());
+    	address.setStreet(userInfoBean.getStreet());
+    	address.setZip(userInfoBean.getZip());
+    	return address;
     }
 }

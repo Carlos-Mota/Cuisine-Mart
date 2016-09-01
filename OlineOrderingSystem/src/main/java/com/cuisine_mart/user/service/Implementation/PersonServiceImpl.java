@@ -33,8 +33,9 @@ public class PersonServiceImpl implements IPersonService {
 	 * @see com.cuisine_mart.user.service.IServiceContract.IPersonService#update(com.cuisine_mart.user.domain.Person)
 	 */
 	@Override
-	public void update(Person person) {
-		// TODO Auto-generated method stub
+	public Person update(Person person) {
+		
+		return personDAO.save(person);
 		
 	}
 
