@@ -1,5 +1,7 @@
 package com.cuisine_mart.user.domain;
 
+import java.math.BigInteger;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,12 +18,12 @@ public class Address {
 	private String street;
 	private String city;
 	private String state;
-	private String zip;
-	private String phoneNo;
+	private int zip;
+	private BigInteger phoneNo;
 	
 	public Address(){}
 	
-	public Address(String street, String city, String state, String zip, String phoneNo){
+	public Address(String street, String city, String state, int zip, BigInteger phoneNo){
 		this.street = street;
 		this.city = city;
 		this.state = state;
@@ -53,16 +55,16 @@ public class Address {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getZip() {
+	public int getZip() {
 		return zip;
 	}
-	public void setZip(String zip) {
+	public void setZip(int zip) {
 		this.zip = zip;
 	}
-	public String getPhoneNo() {
+	public BigInteger getPhoneNo() {
 		return phoneNo;
 	}
-	public void setPhoneNo(String phoneNo) {
+	public void setPhoneNo(BigInteger phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 	

@@ -1,5 +1,7 @@
 package com.cuisine_mart.beans;
 
+import java.math.BigInteger;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,8 +14,8 @@ public class RestaurantInfoBean {
         super();
     }
 
-    public RestaurantInfoBean(String name,String description,String street,String city,String zip,String state,
-                              String phoneNumber,Long id,Long cuisineId,String email){
+    public RestaurantInfoBean(String name,String description,String street,String city,int zip,String state,
+                              BigInteger phoneNumber,Long id,Long cuisineId,String email){
         this.name = name;
         this.description = description;
         this.street = street;
@@ -36,9 +38,9 @@ public class RestaurantInfoBean {
     private String description;
     private String street;
     private String city;
-    private String zip;
+    private int zip;
     private String state;
-    private String phoneNumber;
+    private BigInteger phoneNumber;
     private Long cuisineId;
     private MultipartFile imageToUpload;
 
@@ -76,11 +78,11 @@ public class RestaurantInfoBean {
         this.cuisineId = cuisineId;
     }
 
-    public String getPhoneNumber() {
+    public BigInteger getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(BigInteger phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -92,11 +94,11 @@ public class RestaurantInfoBean {
         this.state = state;
     }
 
-    public String getZip() {
+    public int getZip() {
         return zip;
     }
 
-    public void setZip(String zip) {
+    public void setZip(int zip) {
         this.zip = zip;
     }
 

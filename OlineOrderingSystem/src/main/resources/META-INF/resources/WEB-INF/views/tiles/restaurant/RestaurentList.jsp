@@ -26,7 +26,7 @@
                             <div class="caption">
                                 <h3>${Restaurant.name}</h3>
                                 <p>${Restaurant.cuisineCategory.name}</p> 
-                                <p>${Restaurant.restaurantId}</p>
+                                <p>${Restaurant.description}</p>
                                
                             </div>
                              <input type="button" value="Details" onclick="location.href = '<c:url value='/restaurant/details/${Restaurant.restaurantId}'/>'" class="btn btn-primary">

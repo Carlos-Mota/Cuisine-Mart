@@ -18,10 +18,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.mail.Multipart;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Rajiv on 8/29/2016.
@@ -71,10 +75,20 @@ public class AdminController {
 
     @RequestMapping(value = "/saveRestaurant", method = RequestMethod.POST)
     public String saveRestaurant(RedirectAttributes redirectAttributes,@ModelAttribute("restaurantInfoBean") RestaurantInfoBean restaurantInfoBean,
-                                 BindingResult bindingResult,ModelMap modelMap) {
+                                 BindingResult bindingResult,ModelMap modelMap,HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
             return "redirect:/admin/addRestaurant";
+        }
+        MultipartFile restaurentImage = restaurantInfoBean.getImageToUpload();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        
+        if(restaurentImage != null && !restaurentImage.isEmpty()) {
+        	try {
+        		
+        	} catch(Exception e) {
+        		throw new RuntimeException("Restaurent Image saving failed",e);
+        	}
         }
         adminService.saveRestaurant(restaurantInfoBean);
         return "redirect:/admin/dashboard";

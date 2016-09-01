@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,13 +60,19 @@ public class OrderController {
 //		model.addAttribute("Address", person.getAddress());
 //		model.addAttribute("OrderAddress",new Address());
 		Person person = (Person) request.getSession().getAttribute("person");
-		model.addAttribute("Address", person.getAddress());
+		if(person!=null) {
+			model.addAttribute("Address", person.getAddress());
+		}
+		
 		model.addAttribute("OrderAddress",new Address());
 		return "orderAddress";
 	}
 	
 	@RequestMapping(value="/address",method=RequestMethod.POST)
-	public String processOrder(@RequestParam String HiddenAddressId,@ModelAttribute("OrderAddress") Address address,Model model,HttpServletRequest request) {
+	public String processOrder(@RequestParam String HiddenAddressId,@ModelAttribute("OrderAddress") @Valid Address address,BindingResult bindingResult,Model model,HttpServletRequest request) {
+		if(bindingResult.hasErrors()) {
+			return "redirect:/address";
+		}
 		if(HiddenAddressId.equals("0")) {
 			addressService.saveAddress(address);
 			Person person = (Person) request.getSession().getAttribute("person");

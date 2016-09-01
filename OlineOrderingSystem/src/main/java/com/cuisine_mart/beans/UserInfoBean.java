@@ -3,6 +3,8 @@
  */
 package com.cuisine_mart.beans;
 
+import java.math.BigInteger;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,12 +21,12 @@ public class UserInfoBean {
 	private String lastName;
     @Size(min = 1,message = "{signup.email.error}")
     private String email;
-    private String phoneNo;
+    private BigInteger phoneNo;
     private String city;    
 	private String street;
     
 	private String state;
-    private String zip;
+    private int zip;
     @Size(min = 1,message = "{signup.userName.empty.error}")
     private String userName;
     @NotNull(message = "{signup.password.empty.error}")
@@ -44,8 +46,8 @@ public class UserInfoBean {
 	 * @param password
 	 */
     public UserInfoBean(){}
-	public UserInfoBean(String firstName, String lastName, String email, String phoneNo, String city, String street,
-			String state, String zip, String userName, String password) {
+	public UserInfoBean(String firstName, String lastName, String email, BigInteger phoneNo, String city, String street,
+			String state, int zip, String userName, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -122,13 +124,13 @@ public class UserInfoBean {
 	/**
 	 * @return the zip
 	 */
-	public String getZip() {
+	public int getZip() {
 		return zip;
 	}
 	/**
 	 * @param zip the zip to set
 	 */
-	public void setZip(String zip) {
+	public void setZip(int zip) {
 		this.zip = zip;
 	}
 	/**
@@ -158,13 +160,13 @@ public class UserInfoBean {
 	/**
 	 * @return the phoneNo
 	 */
-	public String getPhoneNo() {
+	public BigInteger getPhoneNo() {
 		return phoneNo;
 	}
 	/**
 	 * @param phoneNo the phoneNo to set
 	 */
-	public void setPhoneNo(String phoneNo) {
+	public void setPhoneNo(BigInteger phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 	/**

@@ -49,7 +49,7 @@ public class RestaurantServiceImplTest {
         Address address = new Address();
         address.setState("IA");
         address.setStreet("1000 N, 4th Street");
-        address.setZip("52557");
+        address.setZip(52557);
         address.setCity("Fairfield");
         return Arrays.asList(address);
     }
@@ -58,7 +58,7 @@ public class RestaurantServiceImplTest {
         Address address = new Address();
         address.setState("IA");
         address.setStreet("1000 N, 3rd Street");
-        address.setZip("52557");
+        address.setZip(52557);
         address.setCity("Fairfield");
         return Arrays.asList(address);
     }

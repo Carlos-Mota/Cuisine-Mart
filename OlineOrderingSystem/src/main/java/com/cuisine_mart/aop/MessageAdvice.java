@@ -19,7 +19,7 @@ import javax.naming.NamingException;
 @Aspect
 @Component
 public class MessageAdvice {
-    ApplicationContext context = new AnnotationConfigApplicationContext(
+/*    ApplicationContext context = new AnnotationConfigApplicationContext(
             JmsConfig.class);
 
     @After("execution(* com.cuisine_mart.restaurant.service.implementation.RestaurantServiceImpl.save(..)) && args(restaurant)")
@@ -44,5 +44,5 @@ public class MessageAdvice {
 
     public void printMessage(String message){
         System.out.println(message);
-    }
+    }*/
 }
