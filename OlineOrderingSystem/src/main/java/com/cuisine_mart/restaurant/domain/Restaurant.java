@@ -18,13 +18,14 @@ public class Restaurant {
     }
 
     public Restaurant(String name,String description,String image,List<Address> addressList,
-                      CuisineCategory cuisineCategory,List<Menu> menus){
+                      CuisineCategory cuisineCategory,List<Menu> menus,String email){
         this.name = name;
         this.description = description;
         this.image = image;
         this.addressList = addressList;
         this.cuisineCategory = cuisineCategory;
         this.menus = menus;
+        this.email = email;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

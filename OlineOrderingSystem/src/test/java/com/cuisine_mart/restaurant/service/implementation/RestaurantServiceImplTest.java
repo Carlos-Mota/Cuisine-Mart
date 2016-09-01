@@ -39,10 +39,10 @@ public class RestaurantServiceImplTest {
     @Before
     public void setup(){
         restaurant = new Restaurant("f-one","This is a nice restaurant which serves variety of foods",
-                null,initAddress1(),initCuisine1(),initMenu1());
+                null,initAddress1(),initCuisine1(),initMenu1(),"test@gmail.com");
 
         restaurant1 = new Restaurant("f-two","Best restaurant in the town",
-                null,initAddress2(),initCuisine2(),initMenu2());
+                null,initAddress2(),initCuisine2(),initMenu2(),"test@gmail.com");
     }
 
     public List<Address> initAddress1(){

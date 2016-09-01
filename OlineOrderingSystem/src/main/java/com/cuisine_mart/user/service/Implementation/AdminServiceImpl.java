@@ -56,13 +56,14 @@ public class AdminServiceImpl {
 		if (restaurantId != null) {
 			restaurant = iRestaurantService.get(restaurantId);
 			restaurant = setRestaurantValues(restaurant, restaurantInfoBean, address, cuisineCategory);
+            iRestaurantService.update(restaurant);
 		} else {
 			address = new Address(restaurantInfoBean.getStreet(), restaurantInfoBean.getCity(), restaurantInfoBean.getState(),
 					restaurantInfoBean.getZip(), restaurantInfoBean.getPhoneNumber());
 			restaurant = new Restaurant(restaurantInfoBean.getName(), restaurantInfoBean.getDescription(),
-					restaurantInfoBean.getImage(), Arrays.asList(address), cuisineCategory, null);
+					restaurantInfoBean.getImage(), Arrays.asList(address), cuisineCategory,null, restaurantInfoBean.getEmail());
+            iRestaurantService.save(restaurant);
 		}
-		iRestaurantService.save(restaurant);
 	}
 
 	public void saveMenu(@ModelAttribute Menu menu,@RequestParam String restaurantId,@RequestParam String menuId) {

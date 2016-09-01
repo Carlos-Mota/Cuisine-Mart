@@ -61,7 +61,7 @@ public class RestaurantServiceImpl implements IRestaurantService {
 
     @Override
     public Restaurant update(Restaurant restaurant) {
-        return save(restaurant);
+        return restaurantDao.save(restaurant);
     }
 
     @Override
