@@ -42,7 +42,7 @@ ul li a {
 				<li class="active"><a class="glyphicon glyphicon-shopping-cart"
 					href="<a:url value='/cart'/>">ShoppingCart[]</a></li>
 				<a:if test="${pageContext.request.userPrincipal.name != null}">
-					<li><a href="/useredit"><h3>Edit User</h3></a></li>
+					<li><a href="/useredit/${pageContext.request.userPrincipal.name}"><h3>Edit User</h3></a></li>
 				</a:if>
 				<a:if test="${pageContext.request.userPrincipal.name == null}">
 					<li class="hidden"></li>

@@ -22,13 +22,43 @@ public class UserInfoBean {
     private String phoneNo;
     private String city;    
 	private String street;
-    private String state;
+    
+	private String state;
     private String zip;
     @Size(min = 1,message = "{signup.userName.empty.error}")
     private String userName;
     @NotNull(message = "{signup.password.empty.error}")
     @Size(min=1,message = "{signup.password.invalid.error}")
     private String password;
+    
+    /**
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param phoneNo
+	 * @param city
+	 * @param street
+	 * @param state
+	 * @param zip
+	 * @param userName
+	 * @param password
+	 */
+    public UserInfoBean(){}
+	public UserInfoBean(String firstName, String lastName, String email, String phoneNo, String city, String street,
+			String state, String zip, String userName, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNo = phoneNo;
+		this.city = city;
+		this.street = street;
+		this.state = state;
+		this.zip = zip;
+		this.userName = userName;
+		this.password = password;
+	}
+    
 	/**
 	 * @return the firstName
 	 */

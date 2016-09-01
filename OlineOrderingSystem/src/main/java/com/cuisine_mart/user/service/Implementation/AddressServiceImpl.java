@@ -26,7 +26,7 @@ public class AddressServiceImpl implements IAddressService{
 	@Override
 	public List<Address> getAllAddress() {
 		// TODO Auto-generated method stub
-		return null;
+		return addressDao.findAll();
 	}
 
 	@Override
